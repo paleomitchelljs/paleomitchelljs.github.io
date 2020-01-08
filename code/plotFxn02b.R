@@ -1,5 +1,5 @@
 # summarize the day count
-Days <- unique(beren2$age[Feeds])
+Days <- unique(beren3$age[Feeds])
 ndays <- length(Days)
 
 # create a set of custom colors
