@@ -7,13 +7,23 @@ calcChi <- function(x, expect=NULL)	{
 	Chisq <- sum(sqErr)
 	return(Chisq)
 }
-simDraws <- function(nruns, ncols=6, nstart=10, nrounds=3)	{
+simDraws <- function(nruns, ncols=6, nstart=10, nrounds=3, w=NULL)	{
 	Chiout <- c()
 	for (j in 1:nruns)	{
 		Start <- rep(1:ncols, nstart)
 		Pop <- Start
 		for (i in 1:nrounds)	{
-			Draws <- sample(Pop, 20, replace = F)
+			if (is.null(w))	{
+				Draws <- sample(Pop, 20, replace = F)
+			}
+			else if (!is.null(w))	{
+				if (length(setdiff(unique(Pop), names(w))) == 0)	{
+					Draws <- sample(Pop, 20, replace=F, prob=w[Pop])
+				}
+				else if (length(setdiff(unique(Pop), names(w))) != 0)	{
+					cat("Not enough fitness values! ", setdiff(unique(Pop), names(w)))
+				}
+			}
 			Pop <- sort(c(Draws,Draws,Draws))
 		}
 		Summary <- c()
