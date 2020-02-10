@@ -51,15 +51,15 @@ addHist <- function(Y, Dat, Color, Conf = 0.5, LWD=2, jiggle = 0.1, Yexp = 0.75,
 		points(mean(Dat), Y, pch=21, bg=Color)
 	}	
 }
-plotChis <- function( counts )	{
+plotChis <- function( counts , Ylims = c(0, 60) )	{
 	par(mfrow=c(4,1))
-	barplot(as.numeric(counts[sample(which(Chisqs == max(Chisqs)))[1],]), names.arg=colnames(counts), col=colnames(counts), main=bquote(chi^2==.(max(Chisqs))))
+	barplot(as.numeric(counts[sample(which(Chisqs == max(Chisqs)))[1],]), names.arg=colnames(counts), col=colnames(counts), main=bquote(chi^2==.(max(Chisqs))), ylim=Ylims)
 	abline(h=10, lty=2, col='gray70')
-	barplot(as.numeric(counts[sample(which(Chisqs == median(Chisqs)))[1],]), names.arg=colnames(counts), col=colnames(counts), main=bquote(chi^2==.(median(Chisqs))))
+	barplot(as.numeric(counts[sample(which(Chisqs == median(Chisqs)))[1],]), names.arg=colnames(counts), col=colnames(counts), main=bquote(chi^2==.(median(Chisqs))), ylim=Ylims)
 	abline(h=10, lty=2, col='gray70')
-	barplot(as.numeric(counts[sample(which(Chisqs == min(Chisqs)))[1],]), names.arg=colnames(counts), col=colnames(counts), main=bquote(chi^2==.(min(Chisqs))))
+	barplot(as.numeric(counts[sample(which(Chisqs == min(Chisqs)))[1],]), names.arg=colnames(counts), col=colnames(counts), main=bquote(chi^2==.(min(Chisqs))), ylim=Ylims)
 	abline(h=10, lty=2, col='gray70')
-	barplot(rep(10, ncol(counts)), names.arg=colnames(counts), col=colnames(counts), main=bquote(chi^2==0))
+	barplot(rep(10, ncol(counts)), names.arg=colnames(counts), col=colnames(counts), main=bquote(chi^2==0), ylim=Ylims)
 	abline(h=10, lty=2, col='gray70')
 }
 
