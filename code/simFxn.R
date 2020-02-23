@@ -244,15 +244,25 @@ plotFit <- function(nruns, n = 100, ngens = 100, init_p = 0.5, h = 1, s = 0, mu 
 
 }
 
-addFit <- function(nruns, n = 100, ngens = 100, init_p = 0.5, h = 1, s = 0, mu = 1e-6, cpt=1.2, cLwd=2, Alpha = 1)	{
-	Cols <- c(rgb(166/255,206/255,227/255,Alpha),rgb(31/255,120/255,180/255,Alpha),rgb(178/255,223/255,138/255,Alpha),rgb(51/255,160/255,44/255,Alpha),rgb(251/255,154/255,153/255,Alpha),rgb(227/255,26/255,28/255,Alpha),rgb(253/255,191/255,111/255,Alpha),rgb(255/255,127/255,0,Alpha),rgb(202/255,178/255,214/255,Alpha))
-	Pal <- colorRampPalette(Cols, interpolate = "spline", alpha = T)
-	simCol <- Pal(nruns)
-
+addFit <- function(nruns, n = 100, ngens = 100, init_p = 0.5, h = 1, s = 0, mu = 1e-6, cpt=1.2, cLwd=2, Alpha = 1, startT = 0, rescale = F, simCol = NULL)	{
+	if (is.null(simCol))	{
+		Cols <- c(rgb(166/255,206/255,227/255,Alpha),rgb(31/255,120/255,180/255,Alpha),rgb(178/255,223/255,138/255,Alpha),rgb(51/255,160/255,44/255,Alpha),rgb(251/255,154/255,153/255,Alpha),rgb(227/255,26/255,28/255,Alpha),rgb(253/255,191/255,111/255,Alpha),rgb(255/255,127/255,0,Alpha),rgb(202/255,178/255,214/255,Alpha))
+		Pal <- colorRampPalette(Cols, interpolate = "spline", alpha = T)
+		simCol <- Pal(nruns)
+	}
+	else if (length(simCol) < nruns)	{
+		cat("Plotting all lines using", simCol[1])
+		simCol <- rep(simCol[1], nruns)
+	}
 # simulation runs
 	for (i in 1:nruns)	{
 		Pops <- simPop( n, ngens, h = h, s = s, initial_p = init_p, mu = mu)
-		lines(1:nrow(Pops), Pops[,1], lwd=cLwd, col=simCol[i])
+		Time <- 1:nrow(Pops)
+		Freq <- Pops[,1]
+		if (rescale)	{
+			Freq <- Pops[,1] - Pops[1,1]
+		}
+		lines(Time + startT, Freq, lwd=cLwd, col=simCol[i])
 	}	
 
 }
