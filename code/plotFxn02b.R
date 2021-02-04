@@ -30,5 +30,11 @@ legend("top", legend=dayVec, pch=21, pt.bg=Cols[as.character(dayVec)], horiz = T
 
 
 # make a nap plot!
+Naps <- which(beren2$event == "nap")
+
+startT <- beren2$start_hour[Naps] + ( beren2$start_minute[Naps] / 60 )
+endT <- beren2$end_hour[Naps] + ( beren2$end_minute[Naps] / 60 )
+napTs <- endT - startT
+
 plot(1,1,type="n", xlim=c(125, 700), ylim=c(7, 16), xlab="age (days)", ylab="nap time")
 x <- tapply(1:length(Naps), beren2$age[Naps], function(x) segments(beren2$age[Naps][x], startT[x], beren2$age[Naps][x], endT[x]))
