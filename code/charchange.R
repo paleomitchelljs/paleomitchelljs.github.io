@@ -45,7 +45,6 @@ plot(testT)
 #Heights <- nodeHeights(rescaled)
 
 plot(testT)
-edgelabels(bg=NULL, frame="none", pch=16)
 # find which characters change on each edge
 for (i in 1:nrow(eMat))	{
 	# find which characters changed (which ancestor states != descendent states for each edge)
@@ -53,8 +52,9 @@ for (i in 1:nrow(eMat))	{
 	Chars <- which(abs(changeVec) > 0)
 	# if any change happened..
 	if (length(Chars) > 0)	{
-		Reformat <- sapply(1:length(Chars), function(x) paste(Chars[x], ": ", Ancest[i,x], "->", Descend[i,x], sep=""))
+		Reformat <- sapply(Chars, function(x) paste(x, ": ", Ancest[i,x], "->", Descend[i,x], sep=""))
 		edgelabels(i, bg=NULL, frame="none", text=paste(Reformat, collapse="\n"), pos=1)
+		edgelabels(edge=i, bg=NULL, frame="none", pch=16)
 
 		# couldn't get the below to work, but it's the general idea. Can look up old code I wrote to stick labels on edges in specific places later if you can't get a satisfactory look
 #		XX <- (obj$xx[rescaled$edge[i,2]] - obj$xx[rescaled$edge[i,1]]) / length(Chars)
