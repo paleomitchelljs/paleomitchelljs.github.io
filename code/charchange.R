@@ -1,14 +1,25 @@
-makeCharMat <- function(tree, phyDat) {
+makeCharMat <- function(tree, traitMatrix) {
 	require(phangorn)
-	aceTree <- pace(tree, phyDat, "ACCTRAN", return="prob")
+	require(paleotree)
 
-	# if phangorn does something weird, this will throw an error.
-	charMat <- matrix(nrow=length(aceTree), ncol=ncol(testChar))
-	for (i in 1:length(aceTree))	{
-		# note that, as written, this only works on binary (0/1) characters. Modifying it isn't too hard, but would involve something other than just taking the 1 column from ace
-		charMat[i,] <-  aceTree[[i]][,2]
+	# this specific approach has only been tested for binary states, but should be extendible
+	# but there may need to be adjustments
+	# traitMatrix also needs to have rownames == tiplabels of tree
+	traitMatrix <- traitMatrix[tree$tip.label,]
+
+	# make a storage matrix
+	charMat <- matrix(0, nrow=Ntip(tree)*2 - 1, ncol=ncol(traitMatrix))
+	for (i in 1:ncol(traitMatrix))	{
+		# make a trait vector
+		Trait <- traitMatrix[,i]
+		names(Trait) <- rownames(traitMatrix)
+
+		# use paleotree to find states
+		# can probably replace the "1" with a which() applied to rows 
+		aTrait <- ancPropStateMat(Trait, tree, type="ACCTRAN")
+		charMat[,i] <-  apply(aTrait, 1, function(x) which(x == 1))
 	}
-	rownames(charMat) <- 1:nrow(charMat)
+	rownames(charMat) <- rownames(aTrait)
 	return(charMat)
 }
 #
@@ -103,8 +114,6 @@ testChar <- rbind(
 			)
 rownames(testChar) <- testT$tip.label
 
-# convert fake data to phyDat format for phangorn to use acctran
-testPhy <- as.phyDat(testChar, type="USER", levels=c(0,1))
 
 # phangorn is odd, so makeCharMat() will likely need heavy editting for different datasets
 # but you do not need to use phangorn.
@@ -112,7 +121,7 @@ testPhy <- as.phyDat(testChar, type="USER", levels=c(0,1))
 # charMat is a matrix where each row is an edge number, each column is a trait, and each cell is a reconstruction
 # can be from acctran, or simmap, or ace, or whatever
 # It (currently) has to be in standard R phylo object edge ordering. That is, the first 1 to Ntip taxa are tips, then the nodes follow after
-Mat <- makeCharMat(testT, testPhy)
+Mat <- makeCharMat(testT, testChar)
 
 
 # make the plot
