@@ -12,7 +12,15 @@ makeCharMat <- function(tree, phyDat) {
 	return(charMat)
 }
 #
-plotCharChange <- function(tree, charMat, plottree=TRUE, Pch=25, Bg="lightblue", Rescale=FALSE, Mar=c(4,4,4,4))	{
+plotCharChange <- function(tree, charMat, plottree=TRUE, Pch=25, Bg="lightblue", Rescale=FALSE, Rmin = 0.5, Mar=c(4,4,4,4))	{
+	# tree is a phyogenetic tree w/ branch lengths
+	# charMat is a matrix with character states for each tip AND each node. Must have rownames equalling the edge number for the phylo object of ape
+	# plottree is a logical, set to TRUE to plot the tree
+	# Pch and Bg both control the points that plot alongside the char change notations
+	# Mar are the (bottom, left, top, right) margin values for R.
+	# Rescale is a logical, asking if you want to make a tree with branches rescaled to the observed change numbers. Rmin is the min branch length for a rescaled tree
+	#		for a lot of characters, you probably want to do x <- plotCharChange(tree,Data,Rescale=T) followed by plotCharChange(x, Data)
+
 	require(ape)
 	# extract edge matarix
 	eMat <- tree$edge
@@ -23,7 +31,7 @@ plotCharChange <- function(tree, charMat, plottree=TRUE, Pch=25, Bg="lightblue",
 
 	# if you want to scale edges by character change, set Rescale is true and this function will save a new tree rescaled that you can then rerun the function on to plot
 	if (Rescale)	{
-		Rescale <- rep(1, length(tree$edge.length))
+		reTreeE <- rep(1, length(tree$edge.length))
 	}
 
 	# make the phylo
@@ -43,9 +51,9 @@ plotCharChange <- function(tree, charMat, plottree=TRUE, Pch=25, Bg="lightblue",
 		# if any change happened..
 		if (length(Chars) > 0)	{
 			Reformat <- sapply(Chars, function(x) paste(x, ": ", Ancest[i,x], "->", Descend[i,x], sep=""))
-#			if (Rescale)	{
-#				Rescale[i] <- length(Chars)
-#			}
+			if (Rescale)	{
+				reTreeE[i] <- length(Chars)
+			}
 			if (lastPP$direction %in% c("rightwards", "leftwards"))	{
 				xloc_b <- lastPP$xx[eMat[i,1]]
 				xloc_e <- lastPP$xx[eMat[i,2]]
@@ -71,14 +79,17 @@ plotCharChange <- function(tree, charMat, plottree=TRUE, Pch=25, Bg="lightblue",
 			}
 		}
 	}
-#	if (Rescale)	{
-#		reTree <- tree
-#		reTree$edge.length <- Rescale
-#		return(reTree)
-#	}
+	if (Rescale)	{
+		reTree <- tree
+		reTree$edge.length <- reTreeE
+		return(reTree)
+	}
 }
 
 
+##############################
+#      Make the plot!        #
+##############################
 # make fake data
 library(phangorn)
 library(phytools)
@@ -95,14 +106,19 @@ rownames(testChar) <- testT$tip.label
 # convert fake data to phyDat format for phangorn to use acctran
 testPhy <- as.phyDat(testChar, type="USER", levels=c(0,1))
 
-##############################
-#      Make the plot!        #
-##############################
+# phangorn is odd, so makeCharMat() will likely need heavy editting for different datasets
+# but you do not need to use phangorn.
 # Any data you can arrange into a matrix like charMat *will work* for plotCharChange. 
 # charMat is a matrix where each row is an edge number, each column is a trait, and each cell is a reconstruction
 # can be from acctran, or simmap, or ace, or whatever
 # It (currently) has to be in standard R phylo object edge ordering. That is, the first 1 to Ntip taxa are tips, then the nodes follow after
 Mat <- makeCharMat(testT, testPhy)
 
-plotCharChange(testT, Mat)
+
+# make the plot
+x <- plotCharChange(testT, Mat, Rescale=T)
+
+# make a plot w/ branches scaled to num char changes
+plotCharChange(x, Mat)
+
 
