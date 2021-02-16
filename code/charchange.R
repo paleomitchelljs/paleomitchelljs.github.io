@@ -37,14 +37,13 @@ Ancest <- changeMat[as.character(eMat[,1]),]
 Descend <- changeMat[as.character(eMat[,2]),]
 
 # make the phylo
-plot(testT)
+par(mar=c(4,4,4,4))
+plot(testT, direction="up")
 
 # extract some plotting parameters
 #plot(rescaled)
-#obj <- get("last_plot.phylo", envir = .PlotPhyloEnv)
-#Heights <- nodeHeights(rescaled)
+lastPP <- get("last_plot.phylo", envir = .PlotPhyloEnv)
 
-plot(testT)
 # find which characters change on each edge
 for (i in 1:nrow(eMat))	{
 	# find which characters changed (which ancestor states != descendent states for each edge)
@@ -53,20 +52,33 @@ for (i in 1:nrow(eMat))	{
 	# if any change happened..
 	if (length(Chars) > 0)	{
 		Reformat <- sapply(Chars, function(x) paste(x, ": ", Ancest[i,x], "->", Descend[i,x], sep=""))
-		edgelabels(i, bg=NULL, frame="none", text=paste(Reformat, collapse="\n"), pos=1)
-		edgelabels(edge=i, bg=NULL, frame="none", pch=16)
+#		edgelabels(i, bg=NULL, frame="none", text=paste(Reformat, collapse="\n"), pos=1)
+#		edgelabels(edge=i, bg=NULL, frame="none", pch=16)
 
-		# couldn't get the below to work, but it's the general idea. Can look up old code I wrote to stick labels on edges in specific places later if you can't get a satisfactory look
-#		XX <- (obj$xx[rescaled$edge[i,2]] - obj$xx[rescaled$edge[i,1]]) / length(Chars)
+		if (lastPP$direction %in% c("rightwards", "leftwards"))	{
+			xloc_b <- lastPP$xx[rescaled$edge[i,1]]
+			xloc_e <- lastPP$xx[i]
+			xRange <- ( xloc_e - xloc_b ) / (length(Chars) + 2)
+			yloc <- lastPP$yy[i]
+		}
+		else	{
+			yloc_b <- lastPP$yy[rescaled$edge[i,1]]
+			yloc_e <- lastPP$yy[i]
+			yRange <- ( yloc_e - yloc_b ) / (length(Chars) + 2)
+			xloc <- lastPP$xx[i]
+
+		}
 		# add the change on the tree on the right branch
-#		for (j in 1:length(Chars))	{
-#			cat(obj$xx[rescaled$edge[i,1]] - Heights[i,1])
-			# need to add something here for branches with multiple changes, not sure what
-#			points(obj$xx[rescaled$edge[i,1]], obj$yy[rescaled$edge[i,2]], pch=16)
-#			text(obj$xx[rescaled$edge[i,1]], obj$yy[rescaled$edge[i,2]], pos = 3,
-#				paste(Chars[j],": ", Ancest[i,Chars[j]], "->", Descend[i,Chars[j]], sep="")
-#				)
-#		}
+		for (j in 1:length(Chars))	{
+			if (lastPP$direction %in% c("rightwards", "leftwards"))	{
+				points(xloc_b+(j*xRange), yloc, pch=16)
+				text(xloc_b+(j*xRange), yloc, Reformat[j], pos=4, srt=270, offset=1, xpd=NA)
+			}
+			else	{
+				points(xloc, yloc_b+(j*yRange), pch=16)
+				text(xloc, yloc_b+(j*yRange), Reformat[j], pos=4, xpd=NA)				
+			}		
+		}
 	}
 
 }
