@@ -55,3 +55,4 @@ plot(lbAge, log(bMass$value), type="b", pch=16, col="#f1a340", xlab="age (in log
 lines(lcAge, log(cMass$value/1000), type="b", pch=15, col="#998ec3")
 dev.off()
 
+hist(x, col='black', border='white', xlab='offspring masses', main='')
