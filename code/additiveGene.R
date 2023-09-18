@@ -31,7 +31,7 @@ getProb <- function(x, wSD=0.05)	{
 # Each individual is chosen at random to mate. The probably an individual is chosen is a function of it's size relative to the other members of the population. 
 # Beta = 0 (no selection) means that each individual has a 1/PopSize chance to breed
 # Beta = 1 means that 
-runAddSim <- function(PopSize, Va=5, nLoci=5, nSims=5, nGens=50, Err=0.001, S=0.005, Cols=c("#e41a1c","#377eb8","#4daf4a","#984ea3","#ff7f00"), Cexs=c(1.5, 1.4, 1.3, 1.2, 1.1), showMax=F, TopLim=125, Bottom=-10, output=F, setPar=T, plotAlleles=F)	{
+runAddSim <- function(PopSize, Va=5, nLoci=5, nSims=5, nGens=50, Err=0.001, S=0.005, Cols=c("#e41a1c","#377eb8","#4daf4a","#984ea3","#ff7f00"), Cexs=c(1.5, 1.4, 1.3, 1.2, 1.1), showMax=F, TopLim=125, Bottom=-10, output=F, setPar=T, plotAlleles=F, plotGen=T)	{
 	# store it all 
 	Z <- list()
 	nAlleles <- matrix(NA, ncol=nGens, nrow=nSims)
@@ -50,7 +50,9 @@ runAddSim <- function(PopSize, Va=5, nLoci=5, nSims=5, nGens=50, Err=0.001, S=0.
 	if (setPar)	{
 		par(las=1, mgp=c(2, 0.5, 0), tck=-0.01)
 	}
-	plot(1,1, xlim=c(0, nGens), ylim=c(Bottom, TopLim), type="n", xlab="generation", ylab="avg value")
+	if (plotGen)	{
+		plot(1,1, xlim=c(0, nGens), ylim=c(Bottom, TopLim), type="n", xlab="generation", ylab="avg value")
+	}
 	if (showMax)	{
 		abline(h=TopLim, lty=3)
 	}
@@ -85,7 +87,9 @@ runAddSim <- function(PopSize, Va=5, nLoci=5, nSims=5, nGens=50, Err=0.001, S=0.
 			nA[i] <- length(unique(unlist(Pop)))
 		}
 		# plot the change in mean size over all th generations
-		points(1:nGens, apply(X,1,mean), type="b", col=Cols[k], pch=16, cex=Cexs[k], lwd=Cexs[k])
+		if (plotGen)	{
+			points(1:nGens, apply(X,1,mean), type="b", col=Cols[k], pch=16, cex=Cexs[k], lwd=Cexs[k])
+		}
 		Z[[k]] <- X
 		nAlleles[k,] <- nA
 	}
@@ -100,3 +104,21 @@ runAddSim <- function(PopSize, Va=5, nLoci=5, nSims=5, nGens=50, Err=0.001, S=0.
 		return(out)
 	}	
 }
+
+calcDelta <- function(x)	{
+	Means <- apply(x,1,mean)
+	SDs <- apply(x, 1, sd)
+	Deltas <- c(diff(Means),0)
+	return(cbind(SDs,Deltas))
+}
+plotDelta <- function(x)	{
+	Out <- x[[1]]
+	Ds <- lapply(Out, calcDelta)
+	Range <- range(unlist(as.vector(Ds)))
+	par(las=1, mgp=c(2, 0.5, 0), tck=-0.01)
+	plot(1, 1, type="n", ylim=Range, xlim=Range, xlab="mean difference between parents and offspring", ylab="variance of parents")
+	silent <- sapply(Ds, function(x) lines(x[,1], x[,2], lwd=1.2, col=rgb(0,0,0,1/length(Ds))))
+	abline(0,1,lty=3, col='red')
+#	legend("bottomright", legend="line of unity", lty=3, col='red', bty="n")
+}
+
