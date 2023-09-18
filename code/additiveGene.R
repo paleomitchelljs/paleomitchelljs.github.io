@@ -111,13 +111,14 @@ calcDelta <- function(x)	{
 	Deltas <- c(diff(Means),0)
 	return(cbind(SDs,Deltas))
 }
+# doi: 10.1002/ece3.6918
 plotDelta <- function(x)	{
 	Out <- x[[1]]
 	Ds <- lapply(Out, calcDelta)
 	Range <- range(unlist(as.vector(Ds)))
-	par(las=1, mgp=c(2, 0.5, 0), tck=-0.01)
-	plot(1, 1, type="n", ylim=Range, xlim=Range, xlab="mean difference between parents and offspring", ylab="variance of parents")
-	silent <- sapply(Ds, function(x) lines(x[,1], x[,2], lwd=1.2, col=rgb(0,0,0,1/length(Ds))))
+	par(las=1, mgp=c(2, 0.5, 0), tck=-0.01, mar=c(4,5,1,1))
+	plot(1, 1, type="n", ylim=Range, xlim=Range, ylab="offspring mean - parents mean", xlab="sd of parents")
+	silent <- sapply(Ds, function(x) points(x[,1], x[,2], cex=1.2, pch=16, col=rgb(0,0,0,1/length(Ds))))
 	abline(0,1,lty=3, col='red')
 #	legend("bottomright", legend="line of unity", lty=3, col='red', bty="n")
 }
