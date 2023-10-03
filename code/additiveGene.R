@@ -107,18 +107,27 @@ runAddSim <- function(PopSize, Va=5, nLoci=5, nSims=5, nGens=50, Err=0.001, S=0.
 
 calcDelta <- function(x)	{
 	Means <- apply(x,1,mean)
+	N <- length(Means)
+	Beta <- cor(Means[2:N], Means[1:(N-1)])
+	Va <- Beta * apply(x,1,var)
 	SDs <- apply(x, 1, sd)
 	Deltas <- c(diff(Means),0)
-	return(cbind(SDs,Deltas))
+	return(cbind(SDs,Deltas,Beta))
 }
 # doi: 10.1002/ece3.6918
-plotDelta <- function(x)	{
+plotDelta <- function(x, Va=F)	{
 	Out <- x[[1]]
 	Ds <- lapply(Out, calcDelta)
 	Range <- range(unlist(as.vector(Ds)))
 	par(las=1, mgp=c(2, 0.5, 0), tck=-0.01, mar=c(4,5,1,1))
-	plot(1, 1, type="n", ylim=Range, xlim=Range, ylab="offspring mean - parents mean", xlab="sd of parents")
-	silent <- sapply(Ds, function(x) points(x[,1], x[,2], cex=1.2, pch=16, col=rgb(0,0,0,1/length(Ds))))
+	if (Va)	{
+		plot(1, 1, type="n", ylim=Range, xlim=Range, ylab="offspring mean - parents mean", xlab="sd of parents")
+		silent <- sapply(Ds, function(x) points(x[,1], x[,3], cex=1.2, pch=16, col=rgb(0,0,0,1/length(Ds))))
+	}
+	else	{
+		plot(1, 1, type="n", ylim=Range, xlim=Range, ylab="offspring mean - parents mean", xlab="sd of parents")
+		silent <- sapply(Ds, function(x) points(x[,1], x[,2], cex=1.2, pch=16, col=rgb(0,0,0,1/length(Ds))))
+	}
 	abline(0,1,lty=3, col='red')
 #	legend("bottomright", legend="line of unity", lty=3, col='red', bty="n")
 }
