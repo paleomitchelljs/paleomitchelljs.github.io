@@ -35,7 +35,7 @@ plot_regression <- function(predictor, response, predictor_label="", response_la
 
 simulated_regression <- function(N = 100, slope = 1, intercept = 0, error = 0.1)	{
 	x <- runif(N, min=0, max=5)
-	y <- slope * x + intercept + runif(N, min = -1 * error/2, max = error/2)
+	y <- slope * x + intercept + rnorm(N, mean=0, sd=error)
 	Model <- lm(y ~ x)
 	plot(x, y, pch=16, col='lightgray')
 	CI <- confint(Model)
@@ -46,16 +46,16 @@ simulated_regression <- function(N = 100, slope = 1, intercept = 0, error = 0.1)
 	sumMod <- summary(Model)
 	Pars <- sumMod$coef[,1:2]
 	Rsq <- sumMod$r.squared
-	Pval <- sumMod$coef[2,4]
+	Pval <- round(sumMod$coef[2,4], digits = 3)
 	if (Pval < 0.001)	{
-		Pval <- 0.001
+		Pval <- "<0.001"
 	}
 	out <- c(
 		Intercept = round(Pars[1,1], digits=3), 
 		Intercept_StdError = round(Pars[1,2], digits=3), 
 		Slope = round(Pars[2,1], digits=3), 
 		Slope_StdError = round(Pars[2,2], digits=3), 
-		P_value = round(Pval, digits = 3),
+		P_value = Pval,
 		R_squared = round(Rsq, digits=5)*100
 	)
 
