@@ -1,7 +1,7 @@
 
 # 
-#setwd("C:\\Users\\jonsm\\Dropbox\\Professional\\paleomitchelljs.github.io\\data\\")
-setwd("~/Dropbox/Professional/paleomitchelljs.github.io/data")
+setwd("C:\\Users\\jonsm\\Dropbox\\Professional\\paleomitchelljs.github.io\\data\\")
+#setwd("~/Dropbox/Professional/paleomitchelljs.github.io/data")
 Beren <- read.csv("beren.csv")
 dayID <- apply(Beren, 1, function(x) paste(x[1:3], collapse='-'))
 dateID <- sapply(dayID, as.Date, format="%Y-%m-%d", origin = "2019-04-18")
