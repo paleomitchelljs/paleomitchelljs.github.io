@@ -20,28 +20,28 @@ fit_regression <- function(predictor, response, digits=3)	{
 }
 
 # Make a simple regression plot
-plot_regression <- function(predictor, response, predictor_label="", response_label="")	{
+plot_regression <- function(predictor, response, predictor_label="", response_label="", col1="blue", col2="lightblue")	{
 	par(las=1, mar=c(4,4,1,1), mgp=c(2.5,0.5,0), tck=-0.01)
 	plot(x = predictor, y = response, pch=21, bg='gray70', xlab=predictor_label, ylab=response_label)
 	Reg <- lm(response ~ predictor)
 	CI <- confint(Reg)
-	abline(Reg, col='blue', lty=1)
-	abline(CI[,1], col='lightblue', lty=2)
-	abline(CI[,2], col='lightblue', lty=2)
+	abline(Reg, col=col1, lty=1)
+	abline(CI[,1], col=col2, lty=2)
+	abline(CI[,2], col=col2, lty=2)
 
 }
 
 # Add additional functions for each lab. This should, ideally, be a one-stop-shop for O&E and CMB lab convenience functions
 
-simulated_regression <- function(N = 100, slope = 1, intercept = 0, error = 0.1)	{
+simulated_regression <- function(N = 100, slope = 1, intercept = 0, error = 0.1, col1="blue", col2="lightblue")	{
 	x <- runif(N, min=0, max=5)
 	y <- slope * x + intercept + rnorm(N, mean=0, sd=error)
 	Model <- lm(y ~ x)
 	plot(x, y, pch=16, col='lightgray')
 	CI <- confint(Model)
-	abline(Model, col='blue', lty=1)
-	abline(CI[,1], col='lightblue', lty=2)
-	abline(CI[,2], col='lightblue', lty=2)
+	abline(Model, col=col1, lty=1)
+	abline(CI[,1], col=col2, lty=2)
+	abline(CI[,2], col=col2, lty=2)
 
 	sumMod <- summary(Model)
 	Pars <- sumMod$coef[,1:2]
@@ -61,3 +61,4 @@ simulated_regression <- function(N = 100, slope = 1, intercept = 0, error = 0.1)
 
 	return(out)
 }
+
