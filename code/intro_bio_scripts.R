@@ -96,17 +96,17 @@ test_normal <- function(Data)	{
 }
 
 # Boxplots
-make_boxplot <- function(Data, Factor="Year", addPts=T)	{
+make_boxplot <- function(Data, variable="Year", addPts=T)	{
 	par(mfrow=c(1,1), mar=c(4,3,1,1), mgp=c(2, 0.5, 0), tck=-0.01, las=1, cex.axis=0.9, cex.lab=1.2)
-	z <- boxplot(Data[,"GUD"]~Data[,Factor], boxwex=0.15, col='white', xlab=Factor, ylab="giving up density")
+	z <- boxplot(Data[,"GUD"]~Data[,variable], boxwex=0.15, col='white', xlab=variable, ylab="giving up density")
 	if (addPts)	{
 		Choices <- setNames(seq(from=0, to=(length(z$names)-1), by=1)+0.85, z$names)
-		points(Choices[as.character(Data[,Factor])], Data[,"GUD"], pch=16, cex=0.75, col=rgb(0,0,0,0.3))
+		points(Choices[as.character(Data[,variable])], Data[,"GUD"], pch=16, cex=0.75, col=rgb(0,0,0,0.3))
 	}
 }
 
 # Statistcal test
-kruskal_wallis <- function(Data, Factor="Year")	{
-	Test <- kruskal.test(Data$GUD ~ Data[,Factor], data=Data)
+kruskal_wallis <- function(Data, variable="Year")	{
+	Test <- kruskal.test(Data$GUD ~ Data[,variable], data=Data)
 	
 }
