@@ -108,5 +108,11 @@ make_boxplot <- function(Data, variable="Year", addPts=T)	{
 # Statistcal test
 kruskal_wallis <- function(Data, variable="Year")	{
 	Test <- kruskal.test(Data$GUD ~ Data[,variable], data=Data)
+	Stat <- round(Test$statistic, digits=3)
+	Pval <- round(Test$p.value, digits = 3)
+	if (Pval < 0.001)	{
+		Pval <- 0.001
+	}
+	return(cat("KW chi-squared =", Stat, " & p-value =", Pval))
 	
 }
