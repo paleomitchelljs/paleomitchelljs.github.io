@@ -92,11 +92,11 @@ test_normal <- function(Data)	{
 	if (Pval < 0.001)	{
 		Pval <- 0.001
 	}
-	return(cat("W =", Stat, " & p-value =", Pval))
+	return(cat("Test statistic =", Stat, " & p-value =", Pval))
 }
 
 # Boxplots
-make_boxplot <- function(Data, variable="Year", addPts=T)	{
+make_boxplot <- function(Data, variable="Day", addPts=T)	{
 	par(mfrow=c(1,1), mar=c(4,3,1,1), mgp=c(2, 0.5, 0), tck=-0.01, las=1, cex.axis=0.9, cex.lab=1.2)
 	z <- boxplot(Data[,"GUD"]~Data[,variable], boxwex=0.15, col='white', xlab=variable, ylab="giving up density")
 	if (addPts)	{
@@ -106,13 +106,13 @@ make_boxplot <- function(Data, variable="Year", addPts=T)	{
 }
 
 # Statistcal test
-kruskal_wallis <- function(Data, variable="Year")	{
+test_difference <- function(Data, variable="Day")	{
 	Test <- kruskal.test(Data$GUD ~ Data[,variable], data=Data)
 	Stat <- round(Test$statistic, digits=3)
 	Pval <- round(Test$p.value, digits = 3)
 	if (Pval < 0.001)	{
 		Pval <- 0.001
 	}
-	return(cat("KW chi-squared =", Stat, " & p-value =", Pval))
+	return(cat("Test statistic =", Stat, " & p-value =", Pval))
 	
 }
