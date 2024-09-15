@@ -95,6 +95,9 @@ test_normal <- function(Data)	{
 	return(cat("Test statistic =", Stat, " & p-value =", Pval))
 }
 
+histogram <- function(Data, xlabel="Giving Up Density")	{
+	hist(Data$GUD, col='lightgray', border='white', main="", xlab=xlabel)
+}
 # Boxplots
 make_boxplot <- function(Data, variable="Day", addPts=T)	{
 	par(mfrow=c(1,1), mar=c(4,3,1,1), mgp=c(2, 0.5, 0), tck=-0.01, las=1, cex.axis=0.9, cex.lab=1.2)
