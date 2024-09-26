@@ -90,9 +90,11 @@ test_normal <- function(Data)	{
 	Stat <- round(Test$statistic, digits=3)
 	Pval <- round(Test$p.value, digits = 3)
 	if (Pval < 0.001)	{
-		Pval <- 0.001
+		return(cat("Test statistic =", Stat, " & p-value < 0.001"))
 	}
-	return(cat("Test statistic =", Stat, " & p-value =", Pval))
+	else	{
+		return(cat("Test statistic =", Stat, " & p-value =", Pval))
+	}
 }
 
 histogram <- function(Data, xlabel="Giving Up Density")	{
@@ -114,8 +116,10 @@ test_difference <- function(Data, variable="Day")	{
 	Stat <- round(Test$statistic, digits=3)
 	Pval <- round(Test$p.value, digits = 3)
 	if (Pval < 0.001)	{
-		Pval <- 0.001
+		return(cat("Test statistic =", Stat, " & p-value < 0.001"))
 	}
-	return(cat("Test statistic =", Stat, " & p-value =", Pval))
+	else {
+		return(cat("Test statistic =", Stat, " & p-value =", Pval))
+	}
 	
 }
