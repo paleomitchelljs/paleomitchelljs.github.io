@@ -33,7 +33,7 @@
 #tapply(dat$smr, dat$species, sd)
 
 make_boxplot <- function(x, variable, ylabel="", xlabel="")	{
-	par(mar=c(3,4,1,1), las=1, mgp=c(2, 0.25, 0), tck=-0.01)
+	par(mar=c(3,4,1,1), las=1, mgp=c(2.5, 0.25, 0), tck=-0.01)
 	boxplot(x ~ variable, boxwex=0.15, ylab=ylabel, xlab=xlabel, col='white')
 }
 
