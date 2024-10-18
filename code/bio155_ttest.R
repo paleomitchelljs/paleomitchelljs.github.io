@@ -37,8 +37,18 @@ make_boxplot <- function(x, variable, ylabel="", xlabel="")	{
 	boxplot(x ~ variable, boxwex=0.15, ylab=ylabel, xlab=xlabel, col='white')
 }
 
-run_tTest <- function(x, variable, pair=FALSE)	{
-	z <- t.test(x ~ variable, paired=pair)
+run_tTest <- function(x, variable)	{
+	z <- t.test(x ~ variable)
+	if (z$p.value < 0.001)	{
+		cat("t-Test results", "\n", names(z$estimate)[1], z$estimate[1], "\n", names(z$estimate)[2], z$estimate[2], "\n", "degrees of freedom =", z$parameter, "\n", "scaled difference between group means (t) =", z$statistic, "\n", "p-value < 0.001", "\n")		
+	}
+	else		{
+		cat("t-Test results", "\n", names(z$estimate)[1], z$estimate[1], "\n", names(z$estimate)[2], z$estimate[2], "\n", "degrees of freedom =", z$parameter, "\n", "scaled difference between group means (t) = ", z$statistic, "\n", "p-value = ", z$p.value, "\n")
+	}
+}
+
+run_tTest_paired <- function(x, variable)	{
+	z <- t.test(y=x, x=variable, paired=T)
 	if (z$p.value < 0.001)	{
 		cat("t-Test results", "\n", names(z$estimate)[1], z$estimate[1], "\n", names(z$estimate)[2], z$estimate[2], "\n", "degrees of freedom =", z$parameter, "\n", "scaled difference between group means (t) =", z$statistic, "\n", "p-value < 0.001", "\n")		
 	}
