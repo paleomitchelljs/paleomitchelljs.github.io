@@ -48,7 +48,7 @@ run_tTest <- function(x, variable)	{
 }
 
 run_tTest_paired <- function(x, variable)	{
-	z <- t.test(y=x, x=variable, paired=T)
+	z <- t.test(x[which(variable==unique(variable)[1])], x[which(variable==unique(variable)[2])], paired=T)
 	if (z$p.value < 0.001)	{
 		cat("t-Test results", "\n", names(z$estimate)[1], z$estimate[1], "\n", names(z$estimate)[2], z$estimate[2], "\n", "degrees of freedom =", z$parameter, "\n", "scaled difference between group means (t) =", z$statistic, "\n", "p-value < 0.001", "\n")		
 	}
