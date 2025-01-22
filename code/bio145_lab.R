@@ -1,4 +1,15 @@
 #### BIO 145: Beans lab
+# fake data for first figure in beans lab
+#x <- rnorm(1e2)
+#y1 <- rnorm(1e2)
+#y2 <- x + runif(1e2, min = -1.5, max = 1.5)
+#y3 <- -1 * x + runif(1e2)
+
+#par(las = 1, mgp = c(2, 0.5, 0), tck = -0.01, mfrow=c(1, 3))
+#plot(x, y1, xlab = "variable 1", ylab = "variable 2", pch = 21, bg = 'red', main = "Fig 1. No correlation")
+#plot(x, y2, xlab = "variable 1", ylab = "variable 2", pch = 21, bg = 'red', main = "Fig 2. Weak positive correlation")
+#plot(x, y3, xlab = "variable 1", ylab = "variable 2", pch = 21, bg = 'red', main = "Fig 3. Strong negative correlation")
+
 
 ### generate fake data to test
 #len <- rnorm(20, mean = 10, sd = 1)
@@ -16,7 +27,6 @@
 set_up_plot <- function(bottommargin = 4, leftmargin = 4, topmargin = 1, rightmargin = 1, ticklength = 0.01, labeldistance = 2.5, numberdistance = 0.5)	{
 	par(las = 1, mar = c(bottommargin, leftmargin, topmargin, rightmargin), tck = -1 * ticklength, mgp = c(labeldistance, numberdistance, 0))
 }
-
 add_regression <- function(Model, location = "topleft", y_variable = "mass", x_variable = "length", show_equation = TRUE, show_line = TRUE, linetype = 1, linecolor = 'red')	{
 	code <- setNames(c(1,2,3), c("solid", "dashed", "dotted"))
 	if (class(Model) != "lm")	{
@@ -42,7 +52,6 @@ add_regression <- function(Model, location = "topleft", y_variable = "mass", x_v
 		cat("R2 = ", round(sumreg$r.squared, digits = 3), " & p-value <= ", pval)
 	}
 }
-
 
 beanplot <- function(x, y, xlab = "length", ylab = "mass")	{
 #	set_up_plot()
