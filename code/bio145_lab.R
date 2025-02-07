@@ -70,8 +70,16 @@ beanplot <- function(x, y, xlab = "length", ylab = "mass", show_equation = TRUE)
 }
 
 ## standard curve
-get_equation <- function()	{
-	
+plot_curve <- function(x, y)	{
+	plot(x, y, pch=16, col='gray70')
+	Mod <- lm(y ~ 0 + x)
+	abline(Mod, col='red', lty = 2)
+	Rsq <- round(summary(Mod)$r.sq, digits = 2)
+	Color <- "red"
+	if (Rsq < 0.99)	{
+		Color <- "black"
+	}
+	legend("topleft", legend=paste("R-sq = ", Rsq, sep=""), text.col = Color, bty = "n")
 }
 
 ## back-calculate function
