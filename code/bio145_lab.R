@@ -23,7 +23,6 @@
 #summary(regression)
 #Values <- round(regression$coefficients, digits = 2)
 #legend("topleft", bty="n", legend = paste("mass = ", regression$coefficients[1], " + ", regression$coefficients[2], " * length"))
-
 set_up_plot <- function(bottommargin = 4, leftmargin = 4, topmargin = 1, rightmargin = 1, ticklength = 0.01, labeldistance = 2.5, numberdistance = 0.5)	{
 	par(las = 1, mar = c(bottommargin, leftmargin, topmargin, rightmargin), tck = -1 * ticklength, mgp = c(labeldistance, numberdistance, 0))
 }
@@ -53,14 +52,16 @@ add_regression <- function(Model, location = "topleft", y_variable = "mass", x_v
 	}
 }
 
-beanplot <- function(x, y, xlab = "length", ylab = "mass")	{
+beanplot <- function(x, y, xlab = "length", ylab = "mass", show_equation = TRUE)	{
 #	set_up_plot()
 	plot(x, y, pch = 16, col = 'black', cex = 1.1, xlab = "length (mm)", ylab = "mass (g)")
 	regression <- lm(y ~ x)
 	sumreg <- summary(regression)
 
 	Values <- round(sumreg$coefficients, digits = 3)
-	legend("topleft", bty="n", legend = paste("mass = ", Values[1,1], " + ", Values[2,1], " * length"))
+	if (show_equation)	{
+		legend("topleft", bty="n", legend = paste("mass = ", Values[1,1], " + ", Values[2,1], " * length"))
+	}
 	pval <- Values[2,4]
 	if (pval < 0.001)	{
 		pval <- 0.001
@@ -68,8 +69,26 @@ beanplot <- function(x, y, xlab = "length", ylab = "mass")	{
 	cat("R2 = ", round(sumreg$r.squared, digits = 3), " | p-value < ", pval)	
 }
 
+## standard curve
+get_equation <- function()	{
+	
+}
 
-#source("https://jonsmitchell.com/code/bio145_lab.R")
-#dat <- read.csv('beans.csv')
+## back-calculate function
+convert <- function(x, model)	{
+	(x - model$coefficients[1]) / model$coefficients[2]
+#	model$coefficients[1] + ( model$coefficients[2] * x )
+}
+
+## regression curves
+## multiple lines on one plot
 #set_up_plot()
-#beanplot(dat$len, dat$mass)
+#plot(1, 1, type="n", xlab = "time (sec)", ylab="Tetra-guaiacol concentration (mg/mL)", xlim=c(0, 210), ylim=c(0, max(dat[,4])))
+#points(y = dat[,2], x = dat[,1], pch = 21, bg = "red")
+#points(y = dat[,3], x = dat[,1], pch = 22, bg = "orange")
+#points(y = dat[,4], x = dat[,1], pch = 23, bg = "darkred")
+
+#add_regression(lm(dat[,2]~dat[,1]), show_equation = F, linecolor = "blue")
+#add_regression(lm(dat[,3]~dat[,1]), show_equation = F, linecolor = "skyblue")
+#add_regression(lm(dat[,4]~dat[,1]), show_equation = F, linecolor = "blue")
+
