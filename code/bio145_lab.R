@@ -26,7 +26,7 @@
 set_up_plot <- function(bottommargin = 4, leftmargin = 4, topmargin = 1, rightmargin = 1, ticklength = 0.01, labeldistance = 2.5, numberdistance = 0.5)	{
 	par(las = 1, mar = c(bottommargin, leftmargin, topmargin, rightmargin), tck = -1 * ticklength, mgp = c(labeldistance, numberdistance, 0))
 }
-add_regression <- function(Model, location = "topleft", y_variable = "mass", x_variable = "length", show_equation = TRUE, show_line = TRUE, linetype = 1, linecolor = 'red')	{
+add_regression <- function(Model, location = "topleft", y_variable = "y", x_variable = "x", show_equation = TRUE, show_line = TRUE, linetype = 1, linecolor = 'red')	{
 	code <- setNames(c(1,2,3), c("solid", "dashed", "dotted"))
 	if (class(Model) != "lm")	{
 		cat("You need to use the function lm() to fit a model and store that model as an object. Then give this function that object. Example:", fill = T)
@@ -52,9 +52,9 @@ add_regression <- function(Model, location = "topleft", y_variable = "mass", x_v
 	}
 }
 
-beanplot <- function(x, y, xlab = "length", ylab = "mass", show_equation = TRUE)	{
+beanplot <- function(x, y, xlab = "length", ylab = "mass", show_equation = FALSE, pch = pch)	{
 #	set_up_plot()
-	plot(x, y, pch = 16, col = 'black', cex = 1.1, xlab = "length (mm)", ylab = "mass (g)")
+	plot(x, y, pch = pch, col = 'black', cex = 1.1, xlab = xlab, ylab = ylab)
 	regression <- lm(y ~ x)
 	sumreg <- summary(regression)
 
@@ -70,14 +70,14 @@ beanplot <- function(x, y, xlab = "length", ylab = "mass", show_equation = TRUE)
 }
 
 ## standard curve
-plot_curve <- function(x, y)	{
-	plot(x, y, pch=16, col='gray70')
+plot_curve <- function(x, y, xlab="", ylab="")	{
+	plot(x, y, pch=16, col='gray70', xlab=xlab, ylab=ylab)
 	Mod <- lm(y ~ 0 + x)
 	abline(Mod, col='red', lty = 2)
 	Rsq <- round(summary(Mod)$r.sq, digits = 2)
-	Color <- "red"
+	Color <- "black"
 	if (Rsq < 0.99)	{
-		Color <- "black"
+		Color <- "red"
 	}
 	legend("topleft", legend=paste("R-sq = ", Rsq, sep=""), text.col = Color, bty = "n")
 }
