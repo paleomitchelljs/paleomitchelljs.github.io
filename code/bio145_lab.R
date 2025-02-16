@@ -47,8 +47,12 @@ add_regression <- function(Model, location = "topleft", y_variable = "y", x_vari
 		if (pval < 0.001)	{
 			pval <- 0.001
 		}
+		Coefs <- round(summary(Model)$coefficients, digits = 3)
 		#cat(expression("R"^2~"="~round(sumreg$r.squared, digits = 3)~" & p-value < "~pval))	
-		cat("R2 = ", round(sumreg$r.squared, digits = 3), " & p-value <= ", pval)
+		cat("R2 = ", round(sumreg$r.squared, digits = 3), " & p-value <= ", pval, "\n", fill = T)
+		cat("intercept estimate:", Coefs[1,1], "| SE:", Coefs[1,2], "| t value:", Coefs[1,3], "\n")
+		cat("    slope estimate:", Coefs[2,1], "| SE:", Coefs[2,2], "| t value:", Coefs[2,3])
+
 	}
 }
 
