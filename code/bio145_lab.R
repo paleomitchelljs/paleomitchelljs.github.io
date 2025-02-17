@@ -26,7 +26,7 @@
 set_up_plot <- function(bottommargin = 4, leftmargin = 4, topmargin = 1, rightmargin = 1, ticklength = 0.01, labeldistance = 2.5, numberdistance = 0.5)	{
 	par(las = 1, mar = c(bottommargin, leftmargin, topmargin, rightmargin), tck = -1 * ticklength, mgp = c(labeldistance, numberdistance, 0))
 }
-add_regression <- function(Model, location = "topleft", y_variable = "y", x_variable = "x", show_equation = TRUE, show_line = TRUE, linetype = 1, linecolor = 'red')	{
+add_regression <- function(Model, location = "topleft", y_variable = "y", x_variable = "x", show_equation = TRUE, show_line = TRUE, linetype = 1, linecolor = 'red', addCI = FALSE)	{
 	code <- setNames(c(1,2,3), c("solid", "dashed", "dotted"))
 	if (class(Model) != "lm")	{
 		cat("You need to use the function lm() to fit a model and store that model as an object. Then give this function that object. Example:", fill = T)
@@ -40,8 +40,14 @@ add_regression <- function(Model, location = "topleft", y_variable = "y", x_vari
 		if (show_equation)	{
 			legend(location, bty="n", legend = paste(y_variable, " = ", Values[1,1], " + ", Values[2,1], " * ", x_variable))
 		}
+		if (addCI)	{
+			confidence_intervals <- predict(Model, interval = "confidence", level = 0.95)
+			X <-  Model$model[,2]
+			polygon(c(X, rev(X)), c(confidence_intervals[, "lwr"], rev(confidence_intervals[, "upr"])), col = grDevices:::adjustcolor(linecolor, alpha.f=0.25), border = NA)
+		}
 		if (show_line)	{
-			abline(Model, col = linecolor, lty = code[linetype])
+			segments(x0=Model$model[1,2], y0=Model$fitted[1], x1=Model$model[nrow(Model$model),2], y1=Model$fitted[length(Model$fitted)], col = linecolor, lty = code[linetype])
+#			abline(Model, col = linecolor, lty = code[linetype])
 		}
 		pval <- Values[2,4]
 		if (pval < 0.001)	{
@@ -55,7 +61,23 @@ add_regression <- function(Model, location = "topleft", y_variable = "y", x_vari
 
 	}
 }
-
+compare.slopes <- function(standard_slope, standard_slope_se, experiment_slope, experiment_slope_se, df)	{
+	SEvec <- c(standard_slope_se, experiment_slope_se)
+	if (SEvec[1] == SEvec[2])	{
+		# kludge to prevent rounding/student errors from producing identical SEs and wrecking the analysis
+		SEvec[1] <- SEvec[1] + 0.001*SEvec[1]
+	}
+	if (standard_slope == experiment_slope)	{
+		cat("Your estimated slopes are identical! They can't be clearly different!")
+	}
+	else {
+		Num <- standard_slope - experiment_slope
+		Denom <- sqrt( max(SEvec) - min(SEvec) )
+		Stat <- Num / Denom
+		Pval <- 1 - pt(abs(Stat), df)
+		return(Pval)
+	}
+}
 beanplot <- function(x, y, xlab = "length", ylab = "mass", show_equation = FALSE, pch = pch)	{
 #	set_up_plot()
 	plot(x, y, pch = pch, col = 'black', cex = 1.1, xlab = xlab, ylab = ylab)
