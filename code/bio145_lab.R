@@ -54,8 +54,13 @@ add_regression <- function(Model, location = "topleft", y_variable = "y", x_vari
 			pval <- 0.001
 		}
 		Coefs <- round(summary(Model)$coefficients, digits = 3)
+		R2 <- round(sumreg$r.squared, digits = 3)
+		if (R2 > 0.999)	{
+			R2 <- 0.999
+		}
+
 		#cat(expression("R"^2~"="~round(sumreg$r.squared, digits = 3)~" & p-value < "~pval))	
-		cat("R2 = ", round(sumreg$r.squared, digits = 3), " & p-value <= ", pval, "\n", fill = T)
+		cat("R2 = ", R2, " & p-value <= ", pval, "\n", fill = T)
 		cat("intercept estimate:", Coefs[1,1], "| SE:", Coefs[1,2], "| t value:", Coefs[1,3], "\n")
 		cat("    slope estimate:", Coefs[2,1], "| SE:", Coefs[2,2], "| t value:", Coefs[2,3])
 
@@ -100,7 +105,10 @@ plot_curve <- function(x, y, xlab="", ylab="")	{
 	plot(x, y, pch=16, col='gray70', xlab=xlab, ylab=ylab)
 	Mod <- lm(y ~ 0 + x)
 	abline(Mod, col='red', lty = 2)
-	Rsq <- round(summary(Mod)$r.sq, digits = 2)
+	Rsq <- round(summary(Mod)$r.sq, digits = 3)
+	if (Rsq > 0.999)	{
+		Rsq <- 0.999
+	}
 	Color <- "black"
 	if (Rsq < 0.99)	{
 		Color <- "red"
