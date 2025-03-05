@@ -65,7 +65,7 @@ compare.slopes <- function(standard_slope, standard_slope_se, experiment_slope, 
 	SEvec <- c(standard_slope_se, experiment_slope_se)
 	if (SEvec[1] == SEvec[2])	{
 		# kludge to prevent rounding/student errors from producing identical SEs and wrecking the analysis
-		SEvec[1] <- SEvec[1] + 0.001*SEvec[1]
+		SEvec[1] <- SEvec[1] + 0.999*SEvec[1]
 	}
 	if (standard_slope == experiment_slope)	{
 		cat("Your estimated slopes are identical! They can't be clearly different!")
