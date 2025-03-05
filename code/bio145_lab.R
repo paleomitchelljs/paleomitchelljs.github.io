@@ -10,19 +10,12 @@
 #plot(x, y2, xlab = "variable 1", ylab = "variable 2", pch = 21, bg = 'red', main = "Fig 2. Weak positive correlation")
 #plot(x, y3, xlab = "variable 1", ylab = "variable 2", pch = 21, bg = 'red', main = "Fig 3. Strong negative correlation")
 
-
 ### generate fake data to test
 #len <- rnorm(20, mean = 10, sd = 1)
 #mass <- 3 * len + runif(20)
 #dat <- data.frame(len = len, mass = mass)
 
 ### bean regression
-#par(las = 1, mar = c(4,4,1,1), tck = -0.01, mgp = c(2.5, 0.5, 0))
-#plot(dat$len, dat$mass, pch = 16, col = 'black', cex = 1.1, xlab = "length (mm)", ylab = "mass (g)")
-#regression <- lm(dat$mass ~ dat$len)
-#summary(regression)
-#Values <- round(regression$coefficients, digits = 2)
-#legend("topleft", bty="n", legend = paste("mass = ", regression$coefficients[1], " + ", regression$coefficients[2], " * length"))
 set_up_plot <- function(bottommargin = 4, leftmargin = 4, topmargin = 1, rightmargin = 1, ticklength = 0.01, labeldistance = 2.5, numberdistance = 0.5)	{
 	par(las = 1, mar = c(bottommargin, leftmargin, topmargin, rightmargin), tck = -1 * ticklength, mgp = c(labeldistance, numberdistance, 0))
 }
@@ -66,7 +59,29 @@ add_regression <- function(Model, location = "topleft", y_variable = "y", x_vari
 
 	}
 }
+
+### TODO Include t-values?
 compare.slopes <- function(standard_slope, standard_slope_se, experiment_slope, experiment_slope_se, df)	{
+	SEvec <- c(standard_slope_se, experiment_slope_se)
+	if (SEvec[1] == SEvec[2])	{
+		# kludge to prevent rounding/student errors from producing identical SEs and wrecking the analysis
+		SEvec[1] <- SEvec[1] + 0.001*SEvec[1]
+	}
+	if (standard_slope == experiment_slope)	{
+		cat("Your estimated slopes are identical! They can't be clearly different!")
+	}
+	else {
+		Num <- standard_slope - experiment_slope
+		Denom <- sqrt( max(SEvec)^2 - min(SEvec)^2)
+		df <- ((SEvec[1]^2 + SEvec[2]^2) / ((SEvec[1]^2 / df)) + ((SEvec[2]^2) / df))
+		Stat <- Num / Denom
+		Pval <- 1 - pt(abs(Stat), df)
+		return(Pval)
+	}
+}
+
+
+compare.slopes2 <- function(fit1, fit2)	{
 	SEvec <- c(standard_slope_se, experiment_slope_se)
 	if (SEvec[1] == SEvec[2])	{
 		# kludge to prevent rounding/student errors from producing identical SEs and wrecking the analysis
@@ -83,6 +98,8 @@ compare.slopes <- function(standard_slope, standard_slope_se, experiment_slope, 
 		return(Pval)
 	}
 }
+
+
 beanplot <- function(x, y, xlab = "length", ylab = "mass", show_equation = FALSE, pch = pch)	{
 #	set_up_plot()
 	plot(x, y, pch = pch, col = 'black', cex = 1.1, xlab = xlab, ylab = ylab)
@@ -116,6 +133,7 @@ plot_curve <- function(x, y, xlab="", ylab="")	{
 	legend("topleft", legend=paste("R-sq = ", Rsq, sep=""), text.col = Color, bty = "n")
 }
 
+### TO DO: Maybe force set Intercept to 0? Clarify to only do ONCE!
 ## back-calculate function
 convert <- function(x, model)	{
 	(x - model$coefficients[1]) / model$coefficients[2]
@@ -123,6 +141,8 @@ convert <- function(x, model)	{
 }
 
 ## regression curves
+### TODO: Maybe make a single plot-all-lines-at-once function
+
 ## multiple lines on one plot
 #set_up_plot()
 #plot(1, 1, type="n", xlab = "time (sec)", ylab="Tetra-guaiacol concentration (mg/mL)", xlim=c(0, 210), ylim=c(0, max(dat[,4])))
