@@ -1,7 +1,6 @@
 ####################################
 ### LAB 01 MEASUREMENT AND ERROR ###
 ####################################
-
 ### Provide students the basic summary statistics from a simple linear regression
 fit_regression <- function(predictor, response, digits=3)	{
 	Model <- lm(response ~ predictor)
