@@ -1,0 +1,804 @@
+% Document settings
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{color}
+
+%    \usepackage[explicit]{titlesec}
+    % Raised Rule Command:
+    % Arg 1 (Optional) - How high to raise the rule
+    % Arg 2 - Thickness of the rule
+%    \newcommand{\raisedrulefill}[0][0ex]{\leaders\hbox{\rule[#1]{1pt}{#2}}\hfill}
+%    \titleformat{\section}{\Large\bfseries}{\thesection. }{0em}{#1\,\raisedrulefill[0.4ex]{2pt}}
+%\pagestyle{plain}
+
+\title{Final Exam}
+\author{Name:}
+
+\begin{document}
+
+\section*{Evolution Exam 01 \hspace{5cm}  Name:}
+
+\emph{1. What is one major (global) biogeographic pattern pertaining to how the number of species varies by location?}
+%\textcolor{red}{Richness varies strongly with latitude, while composition varies with longitude.}
+\vspace{6cm}
+
+\emph{2. a) The balance between what rates determines the number of species present on an island? b) What physical attributes of an island impact those rates? c) The world's largest lizard, the Komodo dragon, is capapble of a particular type of} asexual \emph{reproduction called parthenogenesis, so a single female can produce a viable clutch of dozens of eggs without a male present. How does this trait impact the rates you named in a?}
+%\textcolor{red}{a) Extinction and immigration; b) Size of the island impacts extinction and distance from the mainland impacts immigration; c) Less sensitive to extinction due to not needing males. No change in immigration.}
+\vspace{6cm}
+
+\emph{3. Your coolest friend comes and asks you whether or not the pincers seen in lobsters are homologous to those seen in scorpions. a) How do you answer this excellent person? b) Your friend doubts you, so how would you collect some data to convince this person you're correct?}
+%\textcolor{red}{a) ``They're segments of an arthropod, and so have some general homology, but they're independent evolution of the pincer form'' OR ``I'm not sure!''; b) You could 1) comapre the detailed anatomy of the pincers to determine if their relationships to ther anatomical structures are consitent, OR 2) compare the gene expression profiles to determine if the same genes are responsible for transforming a segment into a pincer OR 3) look at the distribution of the pincer trait across all arthropods to see if you find a pattern inconsistent with homology; OR 4) look at the developmental origins of each of the two structures to determine if similar populations of cells give rise to each. Most likely, you'd need to use at least 3 of these experiments.}
+\vspace{6cm}
+
+\emph{4. If you go outside in West Virginia and flip over rocks, you'll find snails. Likewise, if you go outside in New Orleans and flip over logs, you'll find snails. Which are more likely to be present in the fossil record millions of years from now, and why?}
+%\textcolor{red}{New Orleans, as they live in a depositional environment, rather than an erosional one.}
+\vspace{6cm}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{geology}
+	\captionsetup{labelformat=empty}
+	\caption{5. Using the geological rules we discussed, please order the layers and structures shown in this figure from oldest to youngest.}
+\end{figure}
+\vspace{6cm}
+
+\emph{6. For several hundred years, people found fossils of a very strange type of fish that had a fin structure and skull structure more similar to tetrapods than to ``normal'' fish. These fossil forms were found all over the world. These fish were found in shallow marine and freshwater rocks from before tetrapods appeared all the way through the Mesozoic era, but they disappeared at the same time as the non-avian dinosaurs. As such, everyone thought they'd gone extinct at the same time. Until a woman named Mary Latimer found one off the coast of Africa in 1938. Although a bit different, the skeleton was recognizable as being the same sort of fish, as its anatomy was very similar to the fossilized forms. A world-wide hunt ensued for more specimens, and across the former British Empire it was known as the ``100-quid fish'' in honor of the bounty placed on it. Eventually more were found, and it is now known that it is quite abundant in the deep reaches of the Indian Ocean. Please describe the two } \textbf{most probable} \emph{explanations for why this strange fish (the living genus is called} {Latimeria}\emph{) may not have left any fossils for so long.}
+%\textcolor{red}{Moved to an environment that wasn't readily preserved (deep sea). Moved to a geographic region that wasn't preserved (area without uplift).}
+\vspace{6cm}
+
+\emph{7. a) What is anagenesis, b) is it a bigger problem for data on living organisms, or extinct organisms, and c) why did you give the answer you did for b?}
+%\textcolor{red}{Anagenesis is the change in form of a population through time, which is a bigger problem for extinct organisms as 1) we have long time series of occurrences and 2) fossil organisms are only known from their form, so it can be difficult to tell if the form changed or if a new, separate species appeared.}
+\vspace{6cm}
+
+\emph{8. Please compare and contrast the quality of information about species through time and across space in the modern world and in the fossil record.}
+%\textcolor{red}{Modern world has great data on spatial distribution, bad data on temporal distribution. Fossil record is the reverse.}
+\vspace{6cm}
+
+\emph{9. Vertebrates have evolved powered flight three times: in bats, birds and pterosaurs. a) Which appears in the fossil record first? b) Which has the most species in the fossil record? c) Which two clades never overlapped in time?}
+%\textcolor{red}{a) Pterosaurs, b) Birds, c) Pterosaurs \& bats}
+\vspace{6cm}
+
+\emph{10. What are the necessary and sufficient conditions for natural selection?}
+%\textcolor{red}{Variation that is heritable and that influences the probability of reproduction.}
+\vspace{6cm}
+\end{document}
+
+
+% Document settings
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+%    \usepackage[explicit]{titlesec}
+    % Raised Rule Command:
+    % Arg 1 (Optional) - How high to raise the rule
+    % Arg 2 - Thickness of the rule
+%    \newcommand{\raisedrulefill}[0][0ex]{\leaders\hbox{\rule[#1]{1pt}{#2}}\hfill}
+%    \titleformat{\section}{\Large\bfseries}{\thesection. }{0em}{#1\,\raisedrulefill[0.4ex]{2pt}}
+\pagestyle{plain}
+
+\usepackage{enumitem}
+\setlist[enumerate]{itemsep=4mm}
+
+\usepackage{caption}
+\newcommand{\ts}{\textsuperscript}
+
+\newcounter{paranum}[section]
+\newcommand{\NP}{\textbf{\refstepcounter{paranum}\theparanum}\textbf}
+
+\begin{document}
+\section*{Instructions}
+
+Read each question completely and carefully.
+\vspace{2cm}
+
+It's extremely common for students to write down an answer that addresses some question related to, but distinct from, what I asked. If I ask for an hypothesis, I do not want an explanation, and vice-versa. So be careful!
+\vspace{2cm}
+
+Figure out what you're going to say \emph{before} you write anything in the answer space. Your goal is to convince me you understand the material, so plot out your answers accordingly!
+\vspace{2cm}
+
+Leave no answer blank! If something is worth more points, you should probably provide greater detail/justification for your answers!
+\vspace{2cm}
+
+Good luck!
+\vspace{2cm}
+
+\newpage
+\section*{Questions}
+% ISLAND BIOGEOGRAPHY QUESTION
+\NP. \emph{Trees cannot walk. Yet across the Rocky Mountains you find the same high-altitude species spread across each mountaintop. Trees cannot swim, yet if you go to Cuba you'll find trees.} For each of the following pairs of tree traits, describe \textit{why} one trait would increase dispersal probability relative to the other: (a) self-fertilizing \& out-crossing plants; (b) wind-dispersed pollen \& animal-dispersed pollen; (c) wind-dispersed seeds \& bird-dispersed seeds; (d) salt-tolerance \& salt-intolerance %\textcolor{red}{}
+\vspace{5cm}
+
+\newpage
+% NATURAL SELECTION QUESTION
+\NP. \emph{A cancerous tumor is a population of cells within a person's body that have gone ``rogue'' due to the unique mutations they've accumulated. These rogue cells divide and proliferate, and in so doing accumulate additional mutations causing different lineages within the tumor. Mutations within these cells can effect the rate of cell division, the ability to metabolize nutrients, the recognizability to the immune system, and just about every other aspect of the cell.} What does the above information imply for the prospect of a universal ``cure for cancer''? %\textcolor{red}{}
+\vspace{5cm}
+
+\newpage
+% DARWIN QUESTION
+\NP. \emph{Your coolest friend is hanging out with you, and says, ``I've been thinking a lot about memes recently. It seems to me that, for a given like image or gif, there's a bunch of different captions floating around at any given time. Some of those are funnier than others, and people are always tweaking the memes a bit to make new variants. The funnier ones get reposted, which seems like replication, more often than less funny ones. So, even if it seems really unnatural, do you think that these memes evolving by natural selection?''} How do you answer your friend? %\textcolor{red}{}
+\vspace{5cm}
+
+\newpage
+% HOMOLOGY QUESTION
+\begin{figure}[ht]
+\includegraphics[width=0.85\textwidth]{digits}
+\end{figure}
+\NP. (2 points) \emph{Tetrapods (four-legged vertebrates) ancestrally have five digits on their forelimbs, and they are numbered to establish homology, with Digit I (your thumb) and Digit V (your pinky) being the end ones. Many groups have reduced their digits, though. Early fossil horses have five digits, and as you look at younger fossils the outer four toes (digits I, II, IV, \& V) get smaller through time, leaving only digit III in modern horses. Developmental data on horses show all five digits forming, but the outer digits (I, II, IV, and V) disappear later in development. Adult birds have three fingers on their forelimbs. In fossils, the posterior digits (IV \& V) are lost through time, but when you look at developing chicken embryos, the lateral digits (I and V) are lost. Thus, fossil data suggests that the last bird digit is homologous to the horse's digit, while develomental data suggests the middle bird digit is homologous to the horse digit.} Propose an experiment to discriminate between these hypotheses. %\textcolor{red}{}
+\vspace{5cm}
+
+\newpage
+% CLASSIFICATION QUESTION
+\begin{figure}[ht]
+\includegraphics[width=0.85\textwidth]{Caminalcules}
+\caption*{}
+\end{figure}
+\NP. (2 points) \emph{While on a deep-sea voyage, a colleague of yours discovered a suite of strange creatures from near the bottom of the ocean. Eight species were discovered, and your colleague sent you detailed images of them and asked for your help classifying them.} Propose a hierarchical classification system for these eight species, with a specific trait as evidence for each group you propose. (\textit{Nota bene}: I'd recommend using the back of this sheet as scratch paper, and placing your final diagrammed relationships below)
+\vspace{5cm}
+
+\newpage
+% FOSSIL QUESTION
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{fossilSuc}
+\caption*{}
+\end{figure}
+\NP. (3 points) \textit{While investigating the world, your colleague comes across three different sections of rock from Australia (left), Russia (middle), and Argentina (right), and notes the types of rocks, bed thickness, and fossils found in each section. Your colleague sends you their data, and asks you to help them sort out the relative order and age of the different sections.} Draw lines to propose hypothesized correlations between rock units in each of these three sections. You may explain your reasoning in the space below. (\textit{Nota bene}: as discussed in lecture, the same time period in different places may be represented by both different types, thicknesses, and numbers of beds of rock.)
+\vspace{5cm}
+
+% GEOLOGY QUESTION
+%\NP. \emph{} . %\textcolor{red}{}
+%\vspace{5cm}
+
+\newpage
+\section*{Extra Credit}
+\emph{Unlike most time periods, the Cretaceous is not named for a particular place. What does the word ``cretaceous'' mean?}
+\vspace{5cm}
+
+\emph{Approximately when did pterosaurs first appear then disappear from the fossil record?}
+\vspace{5cm}
+
+\end{document}
+
+\newpage
+\clearpage\mbox{}\clearpage
+
+% Document settings
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+%    \usepackage[explicit]{titlesec}
+    % Raised Rule Command:
+    % Arg 1 (Optional) - How high to raise the rule
+    % Arg 2 - Thickness of the rule
+%    \newcommand{\raisedrulefill}[0][0ex]{\leaders\hbox{\rule[#1]{1pt}{#2}}\hfill}
+%    \titleformat{\section}{\Large\bfseries}{\thesection. }{0em}{#1\,\raisedrulefill[0.4ex]{2pt}}
+\pagestyle{plain}
+\usepackage{caption}
+
+
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\tu}{\textsubscript}
+
+\newcounter{qnum}
+\newcommand{\NP}{\textbf{\refstepcounter{qnum}\theqnum.~}}
+
+\begin{document}
+\section*{Questions}
+\NP (1 point) \emph{A virus is a package of genetic material sealed inside a protein coat that, when it is encountered by a cell, has a chance of entering the cell and getting the cell to copy the virus. A virus' traits (protein coat, structure of the genetic material, etc) influence the probability a cell will replicate it (produce it in the presence of other cells). Because the cell replicates the virus, a virus transmits not even a single atom to its descendants. A word is a distinct set of sounds/letters that, when it is encountered by a person, has a chance of entering the human's memory and getting the human to copy the word (verbally or in writing). A word's traits (meaning, sound, etc) influence the probability a human will replicate it (produce it in the presence of others).} Given the definition of evolution by selection: (a) can an animal that uses DNA to encode traits evolve by natural selection? (b) Can a virus that uses DNA to encode traits evolve by natural selection? (c) Can a virus that uses RNA to encode traits evolve by natural selection? (d) Can a word that uses human neurons to encode traits evolve by natural selection? \textcolor{red}{Yes to all}
+
+
+\newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{q_map}
+	\caption*{}
+\end{figure}
+\NP (1 point) \emph{Nerite snails are common aquatic snails across the southern hemisphere. In the south Pacific islands, most species spend their adult stage in freshwater streams, and their larval stage in the ocean. The adults live in steep, fast-flowing streams so that when they reproduce, the young will be washed rapidly out to sea (if they take too long, they die). Once at sea, the larvae stay in the ocean for several years, swimming and following along ocean currents, before settling in a new freshwater stream. Once they find a stream, they migrate up it and then reproduce, beginning the cycle again. Above is a map of the south Pacific, with the number of nerite species present in key locations indicated.} (a) Which location has the greatest mismatch between the observed number of nerite species and what would be expected under the Theory of Island Biogeography? (b) Propose a likely explanation for these data. \textcolor{red}{(a) Australia. (b) These islands are \textit{not} ecological islands from the perspective of the semi-marine (amphidromus) snails, so richness isn't expected to follow an ``island'' pattern at all. As we discussed in class, sharp unsuitable habitat bounds are needed, and those aren't present here. So the immigration rate \textit{is not controlled by water distance}. Any explanation that explicitly posits some other form of control on immigration rate garners full credit (n.b., the number of steep, fast-flowing streams with marine outlets in an area is the primary driver of the richness pattern here, as it is impossible for the snails to immigrate where there are no such streams)}
+\vspace{5cm}
+
+\newpage %%% Not happy with wording, especially of part b
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{q_homology}
+	\caption*{}
+\end{figure}
+\NP (1 point) {\tiny(basically)} \emph{All ray-finned fish have dorsal fins and tail fins. Some species of fish possess an extra fin, called an adipose fin, between the dorsal \& tail fins (see diagram at top left). In fish, early on in development, a large median fin develops along the entire length of the fish's, and as the embryo grows, this fin degenerates in places and leaves the tail and dorsal fin behind. In some fish (Characoidei), the adipose fin emerges as a ``bump''} after \emph{the median fin disappears (see above, left). In other fish the adipose fin develops as a remnant of the median fin fold that never degenerated. The adipose fins of fish also have anatomical differences with some possessing bony plates (``p''), slender rays (``r''), others sharp spines (``s''), and others possessing no connection to any bone at all (e.g., in Salmonidae). The diagram above shows a large number of fish groups with a description of the development and anatomical relationships of the adipose fins in those groups that possess one.} (a) How does the developmental data shown above influence your understanding of the homology between the adipose fin in different groups? (b) How does the anatomical data compare to the developmental data? 
+
+\textcolor{red}{(a) The developmental data imply at least two (probably three +) separate origins (one from the median fin, one from some other group of cells). So the Characoidei would have an adipose fin that may not be homologous to the other groups, which (given the distribution of taxa) mean that the siluriform fin is probably distinct from the other fold-based adipose fins. (b) The anatomical data is consistent with several different origins, with osmeriiforms and myctophiforms having one origin, salmonids another, and siluriforms a third, in addition to the characoid fin also being distinct. Or it's consistent with rapid functional evolution! Regardless, the anatomical evidence also strengthens the idea of (at least) three origins with silurifoms and characoids have non-homologous adipose fins as their anatomy \textit{and} development differs. (n.b., for what it's worth, it is very likely the case that siluriforms and characoids have homologous adipose fins, but based solely on the limited data shown here, it'd be hard to draw that conclusion)}
+
+\textcolor{red}{However, none of these data are strong enough to be conclusive (e.g., characoid and siluriform fins could be homologous, and their anatomy and development could have changed for functional reasons). Further, the consistency of the distribution of the trait on the tree conflicts with the other evidence (did not need to note this for full credit, but it is shown in the data). }
+
+\newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{q_parrots}
+	\caption*{}
+\end{figure}
+\NP (1 point) \emph{The distribution of parrots in the Old World is shown above in black. A Siberian fossil from 17 million years ago is shown as a black star, while European fossils from around 10 million years old are shown with white stars. Three researchers are discussing the nature of these data. The first researcher says that the fossils represent dispersal events, where the birds dispersed to an unsuitable environment and thus promptly went extinct. The second says that these fossils show that the geographic range of ancient parrots was broader than living ones. The third argues that the oldest parrots were adapted to the cold, and over time they become increasingly adapted to warm climates.} (a - c) Why are each of these ideas bad, based on the data shown above? (d) What can you say with confidence using these data? \textcolor{red}{a) It'd be so unlikely that a short-lived, small-population dispersal event would leave a fossil record behind that we can reasonably reject the idea that it happened four times. Also, no information on extinction time/how long they persisted given isolated individual occurrences. (b) We have no information whatsoever on the geographic ranges of the ancient fossils, only individual points in time. Fossils provide bad spatial data, so making a comparison like "broader" between the extinct and modern is folly. (c) This is really wild, as it presupposes that (1) climates are constant over time, (2) species within groups can't be specialized to different environments than other members of the group, (3) there was the same or fewer number of species in the past as now such that the variation in climate tolerance didn't produce any outliers simply due to greater past richness. None of those three presuppositions is good, naming any of them gets full credit here. (d) In the past, some parrots lived in places that living parrots do not now live in. Given the limits of the fossil record we've discussed, you can't really say anything else.} 
+
+\newpage
+\NP (1 point) \emph{You're hanging out with your coolest friend, sipping a fine drink, when they ask you, ``You know how homology describes a sameness in structures between different species? I was wondering, are: arms and legs homologous to each other? As in, within a single indivdiual. My understanding of anatomy is that they have very similar patterns of bones, muscles and nerves, and my understanding of development is that they both form using similar genes and from similar groups of cells. Also, it seems like most things that have one set, like arms, also have legs, with only a few exceptions. What do you think? Can they be homologous even though they're within a single individual?''} How do you answer their question? \textcolor{red}{Your coolest friend here is describing a cool concept called serial homology. The answer is ``yes, to an extent.'' For now it's sufficient to note that they satisfy all of the requisite conditions, so there's some substantial degree of homology between them. Later, in the evo-devo section, we'll discuss how the legs are actually descended from the arms. But you don't need to know that for this question.}
+
+\textcolor{red}{An alternate way to think about this question: homology is a description of fundamental sameness between biological structures (due to shared ancestry). It also comes in degrees, with structures homologous to various extents. A good way to come around on this question is to think of it transitively: a human's arm and a chimp arm are VERY homologous. Further, under the criteria we have, a chimp's \textit{leg} is \textit{to some degree} homologous with a human's arm. Thus human arm $=$ chimp arm $\approx$ human leg, so for that to be true there must be some degree of sameness (some degree of homology) between a human arm \& leg. }
+\vspace{5cm}
+
+\end{document}
+
+% Document settings
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+%    \usepackage[explicit]{titlesec}
+    % Raised Rule Command:
+    % Arg 1 (Optional) - How high to raise the rule
+    % Arg 2 - Thickness of the rule
+%    \newcommand{\raisedrulefill}[0][0ex]{\leaders\hbox{\rule[#1]{1pt}{#2}}\hfill}
+%    \titleformat{\section}{\Large\bfseries}{\thesection. }{0em}{#1\,\raisedrulefill[0.4ex]{2pt}}
+\pagestyle{plain}
+\usepackage{caption}
+
+
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\tu}{\textsubscript}
+
+\newcounter{qnum}
+\newcommand{\NP}{\textbf{\refstepcounter{qnum}\theqnum.~}}
+
+\begin{document}
+\emph{Your coolest friend approaches you with an interesting biological problem, and asks for your help making sense of it, ``So I've got these drawings of some rare creatures from a far away region of the world. All I have are these old drawings by a guy named Camin, so I'm calling these creatures ``Caminalcules''. Apparently he travelled to this area back in the 70's and saw and carefully documented the physical traits of these animals. He also noted where he saw each creature, and made notes about finding more specimens in several sections of rock. I have his drawings, his map, and his geological sections, and I can show them to you here. Another guy, Gendron, published a phylogeny back in 2000, but I don't think it's right. I've made an attempt at making a new taxonomy, a hierarchical grouping, of the creatures.  I've divided them into five small groups I'm just calling c, t, e, x, \& z. I’ve further grouped those five into bigger groups: Blue group is z/x, Green group is z/x/e, Orange group is c/t, and the Gray group is all of them except for one I can't quite place.}
+
+\vspace{1.25cm}
+
+\NP (2 points) Help your friend by: 
+
+(1a) Determining what big group (colored box) the unknown creature best fits in and explaining why.
+
+(1b) Determining how many times paired eyes evolved (i.e., are the paired eyes seen in the orange box homologous to, or convergent with, the eyes seen in groups e and one member of group z).
+
+(1c) Identifying at least four traits that have probably evolved convergently, again assuming this set of groupings is correct. 
+
+(1d) Proposing an alternative grouping that would have less convergence.
+
+\vspace{1.25cm}
+
+\NP (1 point) Help your friend by finding (a) the \emph{most likely} example of dispersal and (b) the \emph{most likely} example of vicariance on the map.
+
+\vspace{1.25cm}
+
+\NP (2 points) Help your friend by determining the relative age of the fossils by organizing the rock layers (A - Y) from oldest to youngest. There may be uncertainty with regards to some layers, so make sure you are clear with your friend! You also need to be pretty clear about how you determined the relative age of these layers, so that your friend can better understand how to do it on their own in the future.
+
+\newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{q_phylo}
+	\caption*{Proposed taxonomy \& mystery creature}
+\end{figure}
+\textcolor{red}{\noindent- 1a Full credit: discussed specific trait homologies and convergence when determining placement. Half credit: discussed only overall similarity. No credit: Only gave an assignment, no trait discussion. No living species can be the ancestor of other living species, so a common error was to call this living species an ``ancestor''. We can't be sure of how traits evolved, but some explanations are more likely than others, especially given the patterns seen in the fossil data from part 3. Must use everything!
+\newline - 1b Full credit: Homologous based on consistent trait distribution (only group x lose eyes, although some in z fuse them). Common ancestry works here, too (same thing). Half credit: homologous for any other reason OR convergent with a pretty good justification (eyes seem to change a lot in this group, maybe they evolve quickly!). No credit: No good justification. Best answer here involves reference to the fossil data in Question 3: paired eyes were there from the start! 
+\newline - 1c Many options. The key is that convergent traits need to be (1) shared by at least two species and (2) have not been present in their common ancestor. Since we can't know for sure what was or was not present in the common ancestor, as in a \& b we must stick with the most likely explanations. That is, the fused eyes seen in two members of group z \textit{could have} evolved separately, but more likely it evolved once (especially given the map!). Some examples: shortened neck (c, e); dorsal spots (c/t and z); elongated forward appendages (z and c/t); bifurcated tail into appendages (z and c/t), lost rear appendages (e \& x); other possibilities 
+\newline - 1d x [ z [e  [ct] ] ] is the least convergent grouping, BUT any grouping you give where you specifically address and discuss the convergences your new grouping gets rid of \& mention at least one new one it creates, you got full credit. Bringing in the biogeographical data here is also a good idea.}
+
+\vspace{5cm}
+
+
+\newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{q_map}
+	\caption*{Biogeographic map of observations}
+\end{figure}
+\textcolor{red}{Dispersal obvious from island members of orange group, vicariance most likely in the division of z group members on the southern continent (there is a narrow strait that seems to have cut the continent in two, no other clear possibility for vicariance really on this map)}
+
+\newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{a_strat}
+	\caption*{Set of stratigraphic columns with fossil occurrences. Rock layers are colored by environment type, but that rascal Camin didn't include a key!}
+\end{figure}
+\textcolor{red}{Explanation of grading: (1 point) a (mostly) correct sequence. (1 point) At least four ambiguities described below discussed. Trans/regress sequences. Blue = lime, yellow = sand, red =terrestrial, brown = mud. \newline Order: $J \rightarrow I \rightarrow H \rightarrow G = (W/X/Y) \rightarrow F = E (V \rightarrow U) \rightarrow D = T \rightarrow C = S \rightarrow R \rightarrow Q = O \rightarrow P = N \rightarrow M = A \rightarrow L \rightarrow K$ (youngest).
+\newline
+Key things: 
+\newline
+\newline $\circ$ Layer A correlates to layer M, so there's some missing time between A \& B 
+\newline $\circ$ Layer B is somewhere between S/R/Q/O/P/N, but canont be mapped to a specific other layer. It represents some unique time/environment situation that wasn't present in the other areas. 
+\newline $\circ$ Layer G correlates to Y/X/W entirely. That is, G doesn't correspond to just one, but rather all three layers--or, to put another way, there's no way to tell whether G $=$ W or G $=$ Y, so you have to treat it as a single correlation
+\newline $\circ$ Layer U complicates things greatly. E/D/F/T all have one of the two species seen in U. D and T are the same environment as U, so the E/F species truly seems to be absent from D/T. But it's unclear if the D/T/U species occurs in the environment of E/F. If you place U somewhere specific, equivalent to F/E is most defensible.
+\newline $\circ$ Layer V is older than U \& younger than W, but like B, cannot be directly correlated to another layer. 
+}
+
+
+\end{document}
+
+% Document settings
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+%    \usepackage[explicit]{titlesec}
+    % Raised Rule Command:
+    % Arg 1 (Optional) - How high to raise the rule
+    % Arg 2 - Thickness of the rule
+%    \newcommand{\raisedrulefill}[0][0ex]{\leaders\hbox{\rule[#1]{1pt}{#2}}\hfill}
+%    \titleformat{\section}{\Large\bfseries}{\thesection. }{0em}{#1\,\raisedrulefill[0.4ex]{2pt}}
+\pagestyle{plain}
+\usepackage{caption}
+
+
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\tu}{\textsubscript}
+
+\newcounter{qnum}
+\newcommand{\NP}{\textbf{\refstepcounter{qnum}\theqnum.~}}
+
+\begin{document}
+
+Read each question carefully. 
+
+Make sure you answer everything each question asks. Each part of each question is worth an \emph{equal} fraction of the question's point value.
+
+Read the question carefully! Don't answer something different from what I ask for!
+
+\emph{Always be as specific as possible!} Use information from other questions (especially the figure questions in the back!) to help you. There's nothing untoward about using the material on the exam itself to help you answer a particular question.
+
+Work within the limits of the data. Your ability to assess what is supported by data is explicitly what I'm testing here (and in your project, and just generally in this class).
+
+\textbf{Assume anything stated in the question is true.}
+
+\newpage
+\NP (1 point) \textit{Your coolest friend comes up to you in the hallway and says, ``Hey, I just read that paper about }Solenodon \textit{venom for fun. It got me thinking. They were talking about the KLK1 gene, and how humans also have it, and snakes have it, and these weird venomous Caribbean euliptophylans also have many copies of it, and how those venomous shrews also have many copies. I was wondering, since the same name is used, that would mean that the KLK1 gene itself is homologous between humans, snakes, shrews, and} Solenodon\textit{. But if genes can be homologous, what about duplicated copies of a gene? Are the extra copies of KLK1 in the shrews homologous to the extra copies in} Solenodon\textit{?} 
+
+How do you answer them?
+
+\textcolor{red}{Function does NOT matter for homology. It explicitly and definitionally does NOT matter. As stated in the question (never argue with the question text) the normal KLK1 gene is homologous between all of these groups. We'll discuss why later when we do genes more, but for now it was just stated in the question text. For the duplicates, the trick here is that while all the duplicates within Solendon are homologous (paralogous) to the ``normal'' copy in shrews (and all the duplicates in shrews are homologous [paralogous] to the ``normal'' copy in Solenodons) the duplications themselves were independent. That was one of the main points of the paper. The two species separately and independently duplicated the same gene to make venom. So the duplicates aren't homologous to one another. So a good answer here would need to emphasize that the two groups duplicated these genes independently, and as long as no \textit{strong} statements about them being homologous were made in the answer, I'd count it at least mostly correct.}
+
+\newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{q_rocks}
+	\caption*{}
+\end{figure}
+\NP (1 point) \textit{Above is a cross section showing the layers of rock up to 5000' below the ground from an area in West Virginia.} 
+
+(a) What is the youngest layer of rock shown?
+
+(b) What is the oldest layer of rock shown?
+
+(c \& d) Shown in this cross section are faults (breaks where rock has slid past other rock, moving out of position). What layer of rock has the \textit{oldest faults} in it? 
+
+\textcolor{red}{(a) Mrp, (b) Ol, (c/d) Omb. Notice that the faults themselves are folded/bent in the Omb layer, whereas everywhere else they are straight; that indicates that the faults in Omb formed BEFORE the layer was fully folded, and the other faults cutting through the Omb faults are younger.}
+%https://www.pnas.org/content/110/38/15354
+
+
+\newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{q_biogeography}
+	\caption*{}
+\end{figure}
+\NP (1 point) \textit{Above are data showing the number of plant species on the islands of the Lesser Antilles. In green are shown data for native plants (plants that existed on these islands before the arrival of Europeans), while data for alien (invasive) plants are shown in red. A second-order polynomial (quadratic) curve was fit to the distance data, and a first-order polynomial (straight line) was fit to the island area data.} 
+
+(a) Which of the two rates that control species diversity on islands differs most between native \& alien plants? 
+
+(b) Propose an alternative measurement that could be taken to better explain what predicts the rate you specified in part (a) for alien species. 
+
+\textcolor{red}{(a) Immigration rate. Normally, farther islands = lower immigration, but the points are essentially flat for alien species. You can calculate it roughly by looking at the difference in the levels of the best-fit lines. Alien plants are arriving via human activity, not via natural dispersal, and so distance isn't functioning the same between the two sorts of plants. (b) Almost any human activity measure makes sense here. Island GDP, number of ports, human population, number of farms, w/e. The trick is to name an actual measurement. ``The environment'' could mean anything. Things like ``survival rate'' could be useful, but }
+%https://www.pnas.org/content/110/38/15354
+
+\newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{q_homology}
+	\caption*{}
+\end{figure}
+
+\NP (1 point) \textit{Pistol shrimp are amazing. They have specialized giant claws, with an elaborate joint that allows them to be cocked like a pistol. These small shrimp do not use their claws to grab things as other crustaceas do, though. Instead, the upper portion of the claw (the dactyl) is held upon under tension and can be ``fired'' also like a pistol. The dactyl snaps shut so fast, a jet of water is fired out. The snapping of this shrimp is one of the loudest sounds produced in nature, and the water forced forward from it's claw can kill a small fish several centimeters away (quite far for such a tiny shrimp!). Two clades (Alpheidae and Palaemonidae) have shrimp with these specialized snapping claws, and none of the other 50,000+ species of Crustacea have anything like this, nor does any other of the more than a million other species of arthropod. The above diagram show shrimp claw anatomy, and both Palaemonidae and Alpheidae with the cocking slip joint have the same arrangement of opening muscles (om) and closing muscles (cm). The shape of the joint mechanism that allows the shrimp to ``fire'' is also identical between the two groups. The same genes are used to create the special joint by affecting the same population of cells during development in the two groups. Above is also shown an evolutionary tree of shrimp, with different types of claws color-coding the ends of the branches. These entirely distinct, anatomically, genetically, and developmentally-identical claws found only in these two small groups of shrimp and in no other arthropods are not completely homologous.} 
+
+(a) What is the best evidence that the special claws in these two shrimp groups are \textit{not} completely homologous? 
+
+(b) Given that the common ancestor of the two types of shrimp did not have this special joint, what else do these data tell us about that ancestor? 
+
+\textcolor{red}{(a) The distribution across taxa is all screwy. It implies multiple losses if they were homologous, and so it's strong evidence against it. (b) There's some homologous pattern in the shrimp that allows them to evolve this trait. You don't yet need to know what kind of thing it is (in this case, a homologous set of genetic regulatorys that form a network that preadapts/potentiates shrimp in this group to evolve these claws), but the fact that this type of claw has only evolved twice and in two related groups tells us that the common ancestor of those two groups must have had something special about it to \textit{allow} for the evolution of that claw. These data tell us absolutely nothing about the ancestor's behavior, ecology, diet, habitat, or defenses.}
+% https://mbio.asm.org/content/mbio/12/1/e02797-20.full.pdf
+
+\newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{q_selection}
+	\caption*{}
+\end{figure}
+
+\NP (1 point) \textit{The Kentucky Derby is a horse-race held every year in Kentucky. Lots of very wealthy people spend a truly obscene amount of money preparing for it. Horses that win the Kentucky Derby and other high-profile races are then used as studs, and are rented to horse-breeders to father the next generation of horses for, again, absurdly high amounts of money. The Kentucky Derby involves many horses that run the track at different speeds. The fastest horse, the one that runs the track in the least time, is the winner. A winning horse will father many times the number of foals as a losing horse, and even a losing horse will father many more foals than one that did not qualify for the race. A ton of money and effort has gone into breeding the fastest possible horses. Above are data showing winning time around the 1.25 mile long track since the late-1800's. Although training, equipment, and jockey techniques have all chanegd over the decades, assume these changes have been too slight to have a noticeable impact on horse speed.} 
+
+(a) Based on all of the data above, if I gathered wild horses and ran them through the Kentucy Derby, then bred the winners, would their speed be faster, slower, or the same in later generations? 
+
+(b) Based on all of the data above, is the speed at which a horse runs the Kentucky Derby currently evolving by selection? 
+
+(c \& d) Propose a \textbf{single} explanation for your answer in (b) consistent with the above data \& information. 
+
+\textcolor{red}{(a) Faster. It's clearly the case that speed can evolve in horse populations based on the first few decades. (b) No. Evolving $=$ changing over time, and the race times haven't changed in decades. It clearly WAS evolving early on, but seems to have stopped around 1950. (c/d) To evolve by selection something needs (1) variation, (2) differential reproduction based on that variation, and (3) for that variation to be heritable. There is obviously differential reproduction due to the practicing of studding, so an answer involving 2 is not consistent. Horse speed is also obviously variable, as not every horse wins so an answer involving 1 is not consistent. The heritability is the weakest link here--it is clearly the case that race speed \textit{was} heritable, but it seems to no longer be. We don't yet know enough as a class to identify that reason (it's a selection limit resulting from additive genetic variation + a epistatic tradeoff between sprint speed and endurance), but even without knowing why heritability changed, identifying that it did so is all you need for full credit.}
+
+\end{document}
+
+% Document settings
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+%    \usepackage[explicit]{titlesec}
+    % Raised Rule Command:
+    % Arg 1 (Optional) - How high to raise the rule
+    % Arg 2 - Thickness of the rule
+%    \newcommand{\raisedrulefill}[0][0ex]{\leaders\hbox{\rule[#1]{1pt}{#2}}\hfill}
+%    \titleformat{\section}{\Large\bfseries}{\thesection. }{0em}{#1\,\raisedrulefill[0.4ex]{2pt}}
+\pagestyle{plain}
+\usepackage{caption}
+
+
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\tu}{\textsubscript}
+
+\newcounter{qnum}
+\newcommand{\NP}{\textbf{\refstepcounter{qnum}\theqnum.~}}
+
+\begin{document}
+
+Read each question carefully. 
+
+Make sure you answer everything each question asks. Each part of each question is worth an \emph{equal} fraction of the question's point value.
+
+Read the question carefully! Don't answer something different from what I ask for!
+
+\emph{Always be as specific as possible!} Use information from other questions (especially the figure questions in the back!) to help you. There's nothing untoward about using the material on the exam itself to help you answer a particular question.
+
+Work within the limits of the data. Your ability to assess what is supported by data is explicitly what I'm testing here (and in your project, and just generally in this class).
+
+\textbf{Assume anything stated in the question is true.}
+
+\newpage
+\NP (1 point) \emph{You are sitting on a park bench with your coolest friend, when they turn to you and say, ``I've been thinking that a good definition for evolution would be the change in frequency of heritable characteristics within replicators. This does make me wonder, though, about one specific example. I saw a funny picture on Twitter the other day. Then later that day, I saw that other people had reposted that same picture, but now with a variety of captions. Some of the specific captions got reposted a lot, while others seem to have been posted once then never again. A week later I am still seeing this image with captions being posted again and again. It seems like the image is replicating itself by having people post repost it, vaguely like how a virus can't replicate itself but can get other cells to replicate it. Do you think this is evolution?'' } How do you answer your coolest friend? \textcolor{red}{The friend here is describing a meme and a meme is a literal example of evolution; the word ``meme'' was coined by an evolutionary biologist in a book on evolutionary biology to discuss how ideas can evolve. Really, any answer that isn't a flat-out `no' could get at least some partial credit. Here I was looking mostly for open-thinking and critical engagement.}
+\vspace{8cm}
+
+% NATURAL SELECTION QUESTION
+\NP (1 point) \emph{A cancerous tumor is a population of cells within a person's body that have gone ``rogue'' due to the unique mutations they've accumulated. These rogue cells divide and proliferate, and in so doing accumulate additional mutations (heritable changes) creating different cell lineages} within \textit{the tumor. These different intratumor lineages can vary in the rate of cell division, the ability to metabolize nutrients, the recognizability to the immune system, and just about every other aspect of the cell.} What does the above information imply about how the cells of a tumor respond over time to a specific treatment? \textcolor{red}{That the population of cells in the tumor can adapt and evolve in response to treatments. If a treatment is too specific, there may be cells that evade it, increasing their frequency and preventing the same treatment from being used effectively in the future for that individual. Conversely, it also means that you can impose alternative pressures on the tumor to render it less malignant (called evolutionary treatments and becoming more common).}
+\vspace{8cm}
+
+
+%\newpage
+\NP (1 point) \emph{I have both arms and legs. My arms and legs both have a skeletal arrangement of one bone, followed by two bones, followed by a series of small bones, followed by five radiating sequences of 19 bones. The muscles are arranged similarly, with flexor and extensor compartments and similar patterns of nerve branching throughout. Developmentally, both derive from a combination of cells from the lateral plate and hypaxial somites and both are triggered as a result from a cascading series of} Tbx, Wnt, Bmp, Fgf, \textit{and} Shh \textit{gene signals. The distribution of ``has arms and legs'' is extremely consistent across species}. Is my arm homologous to my leg? \textcolor{red}{This is a concept called serial homology. The answer is ``yes, to an extent.'' For now it's sufficient to note that they satisfy all of the requisite conditions, so there's some substantial degree of homology between them. Later, in the evo-devo section, we'll discuss how the legs are actually descended from the arms. But you don't need to know that for this question.}
+
+\textcolor{red}{An alternate way to think about this question: homology is a description of fundamental sameness between biological structures (due to shared ancestry). It also comes in degrees, with structures homologous to various extents. A good way to come around on this question is to think of it transitively: a human's arm and a chimp arm are VERY homologous. Further, under the criteria we have, a chimp's \textit{leg} is \textit{to some degree} homologous with a human's arm. Thus human arm $=$ chimp arm $\approx$ human leg, so there's a degree of sameness (some degree of homology) between a human arm \& leg. }
+\vspace{6cm}
+
+\newpage %%% 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{q_rocks}
+	\caption*{}
+\end{figure}
+\NP (1 point) \emph{Above is a diagram showing the bedrock under a particular forest, with fossils known from each layer (trilobite in D, ammonite in E, dinosaur in G, advanced mammals in H and B) indicated. Assume each layer a fossil occurs in represents the full duration each fossil species lived.} (a) What is the youngest layer of rock? (b) What is the oldest layer of rock? (c\&d) Propose an explanation for anything strange observed in this particular sequence of strata. \textcolor{red}{A, C, the rocks representing C-I were overturned by tectonic activity and have actually flipped upside-down. Based on lecture, I told you quite explicitly that trilobites occur before dinosaurs, and that advanced mammals occur after dinosaurs. So you should have had a good handle on the rock order.}
+
+\newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{q_homology}
+	\caption*{}
+\end{figure}
+\NP (1 point) {\tiny(basically)} \emph{All ray-finned fish have dorsal fins and tail fins. Some species of fish possess an extra fin, called an ``adipose fin'' though this is not a technical term, between the dorsal \& tail fins (see diagram at top left). In fish, early on in development, a large median fin develops along the entire length of the fish's, and as the embryo grows, this fin degenerates in places and leaves the tail and dorsal fin behind. In some fish (Characoidei), the adipose fin emerges as a ``bump''} after \emph{the median fin disappears (see above, left). In other fish the adipose fin develops as a remnant of the median fin fold that never degenerated. The adipose fins of fish also have anatomical differences with some possessing bony plates (``p''), slender rays (``r''), others sharp spines (``s''), and others possessing no connection to any bone at all (e.g., in Salmonidae). The diagram above shows a large number of fish groups with a description of the development and anatomical relationships of the adipose fins in those groups that possess one.} (a) Based on the developmental data (left figure), is this fin in Characoidei homologous to the same fin in Salmonidae? (b) Based on the anatomical data (connection to bones, indicated with r/s/p), is the fin in Osmeriformes homologous to the fin in Myctophiiformes? 
+
+\textcolor{red}{(a) The developmental data imply at least two (probably three +) separate origins (one from the median fin, one from some other group of cells). So the Characoidei would have an adipose fin that may not be homologous to the other groups, which (given the distribution of taxa) mean that the siluriform fin is probably distinct from the other fold-based adipose fins. (b) The anatomical data is consistent with several different origins, with osmeriiforms and myctophiforms having one origin, salmonids another, and siluriforms a third, in addition to the characoid fin also being distinct. Or it's consistent with rapid functional evolution! Regardless, the anatomical evidence also strengthens the idea of (at least) three origins with silurifoms and characoids have non-homologous adipose fins as their anatomy \textit{and} development differs. (n.b., for what it's worth, it is very likely the case that siluriforms and characoids have homologous adipose fins, but based solely on the limited data shown here, it'd be hard to draw that conclusion)}
+
+\textcolor{red}{However, none of these data are strong enough to be conclusive (e.g., characoid and siluriform fins could be homologous, and their anatomy and development could have changed for functional reasons). Further, the consistency of the distribution of the trait on the tree conflicts with the other evidence (did not need to note this for full credit, but it is shown in the data). }
+
+
+\end{document}
+
+
+% Document settings
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{array,multirow}
+
+%    \usepackage[explicit]{titlesec}
+    % Raised Rule Command:
+    % Arg 1 (Optional) - How high to raise the rule
+    % Arg 2 - Thickness of the rule
+%    \newcommand{\raisedrulefill}[0][0ex]{\leaders\hbox{\rule[#1]{1pt}{#2}}\hfill}
+%    \titleformat{\section}{\Large\bfseries}{\thesection. }{0em}{#1\,\raisedrulefill[0.4ex]{2pt}}
+\pagestyle{plain}
+\usepackage{caption}
+
+
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\tu}{\textsubscript}
+
+\newcounter{qnum}
+\newcommand{\NP}{\textbf{\refstepcounter{qnum}\theqnum.~}}
+
+\newif\ifkey
+\keytrue
+%\keyfalse
+
+\newcommand{\ans}[1]{
+	\ifkey
+		\textcolor{red}{#1}
+	\else
+		\textnormal{}
+	\fi
+}
+
+\newcommand{\ec}[1]{
+	\ifkey
+		\textnormal{}
+	\else
+		\textnormal{#1}
+	\fi
+}
+
+\begin{document}
+\textbf{Assume anything stated in the question is true.} If your answer to a question involves contradicting something stated in that question or its background information...it isn't the right answer.
+
+Read each question carefully. 
+
+These questions are tricky. Plot out your answer before you start writing; you're welcome to draft answers on scrap paper or annotate questions to get your thoughts in order.
+
+Make sure you answer everything each question asks. Each part of each question is worth an \emph{equal} fraction of the question's point value. If a part of a question is labeled, for example, c+d, then one answer is required but it counts as two parts of the question.
+
+Read the question carefully! Advice so nice I put it twice! Don't answer something different from what I ask for!
+
+Work within the limits of the data. Sometimes the data are ambiguous and it is correct to say, ``you can't tell from these data'' because that's just the way the world works. Sometimes the answer might be ``nothing'' or ``none''! Don't try and guess what you think I want, just answer each question with what you really think the answer is.
+
+Also, \textbf{ask me questions!} If something is unclear or confusing, and you ask me about it, I may be able to clarify it. The worst I can do is say, ``sorry, I can't answer that question'', but most of the time I can give you some sort of clarity. Always worth trying!
+
+
+
+% Phylogeny Q
+% Coalescent time / effective population size Q
+\newpage
+\NP (1 point) \emph{Prions are infectious proteins--strange macromolecules that, when they encounter another protein with the same sequence of amino acids, will change the folded structure of that protein to match the prion. The newly formed prion will then subsequently change any compatible proteins it encounters into more of the same prions. Prions originate from a mutated nucleic acid sequence that produces the original protein, which then misfolds. The same amino acid sequence can misfold in multiple ways to produce prions that have different affinities and properties. Once the first prion forms, it can then spread about a body, or even between bodies, producing more copies of itself by misfolding the proteins it encounters. The most well-known prion disease is called ``mad cow disease'' but prions are associated with diseases in humans (e.g., Kuru, fatal familial insomnia) and other animals (chronic wasting disease) Interestingly, prions were first identified as infectious proteins because UV light treatments, which kill nucleic-acid based pathogens, had no ability to sterilize something infected with prions.} (a) Which of the criteria for evolution by selection do prions fail to satisfy? (b) Can the gene sequence that produces a prion in the first place evolve? (c + d) Can prions evolve after they've been produced, even without any nucleic acids involved? %https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4762734/
+\vspace{1cm}
+\begin{center}
+\begin{tabular}{ p{0.4\textwidth} p{0.4\textwidth} }
+ a) \ans{None} & b) \ans{Yes} \\ \cline{1-2}
+ & \\
+ & \\
+c+d)  \ans{Yes} & \ans{} \\ \cline{1-2}
+\end{tabular}
+\end{center}
+\vspace{2cm} 
+
+\newpage %%% 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{q_rocks}
+	\caption*{}
+\end{figure}
+\NP (1 point) \emph{Above is a diagram showing the bedrock under a particular forest, with fossils known from each layer (trilobite in D, ammonite in E, dinosaur in G, modern(ish) mammals in H and B) indicated. Assume each layer a fossil occurs in represents the full duration each fossil species lived.} (a) What is the youngest layer of rock? (b) What is the oldest layer of rock? (c\&d) Propose an explanation for anything strange observed in this particular sequence of strata. 
+\vspace{1.5cm}
+
+\begin{center}
+\begin{tabular}{ p{0.8\textwidth} c }
+(a) \ans{A} & (b) \ans{C} \\ \cline{1-2}
+& \\
+& \\
+& \\
+(c+d) \ans{The layers C-I were overturned by tectonic activity and are now upside-down. You can tell because trilobites are older than dinosaurs, and dinosaurs are older than mammals.} & \\ \cline{1-2}
+ \end{tabular}
+\end{center}
+
+
+\newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{q_homology2}
+	\caption*{}
+\end{figure}
+
+\NP (1 point) \textit{Pistol shrimp are amazing. They have specialized giant claws, with an elaborate joint that allows them to be cocked like a pistol. These small shrimp do not use their claws to grab things as other crustaceas do, though. Instead, the upper portion of the claw (the dactyl) is held upon under tension and can be ``fired'' also like a pistol. The dactyl snaps shut so fast, a jet of water is fired out. The snapping of this shrimp is one of the loudest sounds produced in nature, and the water forced forward from it's claw can kill a small fish several centimeters away (quite far for such a tiny shrimp!). Two clades (Alpheidae and Palaemonidae) have shrimp with these specialized snapping claws, and \textbf{none} of the other 50,000+ species of Crustacea have anything like this. The above diagrams show shrimp claw anatomy, and both Palaemonidae and Alpheidae with the cocking slip joint have essentially identical anatomical structures to produce this joint. Developmental and genetic data show that the joints are formed by the same cells using the same genes in the two different groups. These claws which are anatomically, genetically, and developmentally-identical and found }only \textit{in these two small groups of shrimp are \textbf{not} completely homologous.} 
+
+(a) What is the best evidence that the special claws in these two shrimp groups are \textit{not} completely homologous? 
+
+(b) Given that the common ancestor of the two types of shrimp did not have this special joint, what else do these data tell us about that ancestor? 
+\vspace{0.5cm}
+
+\begin{center}
+\begin{tabular}{ p{0.8\textwidth} c }
+(a) \ans{The distribution across taxa is not consistent. } &  \\ \cline{1-2}
+& \\
+& \\
+& \\
+(b) \ans{The basis or \textit{potential} for this joint must be shared/homologous} & \\ \cline{1-2}
+ \end{tabular}
+\end{center}
+
+% https://mbio.asm.org/content/mbio/12/1/e02797-20.full.pdf
+
+\newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{q_selection}
+	\caption*{}
+\end{figure}
+
+\NP (1 point) \textit{The Kentucky Derby is a horse-race held every year in Kentucky. Lots of very wealthy people spend a truly obscene amount of money preparing for it. Horses that win the Kentucky Derby and other high-profile races are then used as studs, and are rented to horse-breeders to father the next generation of horses for, again, absurdly high amounts of money. The Kentucky Derby involves \textbf{many horses running at different speeds.} The fastest horse, the one that runs the track in the least time, is the winner. \textbf{A winning horse will father many more foals than a losing horse}, and even a losing horse will father many more foals than one that did not qualify for the race. A ton of money and effort has gone into breeding the fastest possible horses. Above are data showing winning time around the 1.25 mile long track since the late-1800's. Although training, equipment, and jockey techniques have all chanegd over the decades, these changes have been too slight to have a noticeable impact on horse speed. \textbf{Differences in speed in elite race horses can be assumed to be genetic.}} 
+
+(a) Based on the above data, if I took wild horses and began racing them \& bred only the winners, would their speed increase over the next few generations? 
+
+(b) Based on the above data, if I took a bunch of recent Derby winners and began racing them, then bred only the winners, would their speed increase over the next few generations?
+
+(c \& d) Propose a \textbf{single} explanation for your answer in (b) consistent with the above data \& information. 
+\vspace{0.5cm}
+
+\begin{center}
+\begin{tabular}{ p{0.4\textwidth} p{0.4\textwidth} }
+(a) \ans{Yes} & (b) \ans{No}  \\ \cline{1-2}
+ \end{tabular}
+\end{center}
+\vspace{0.25cm}
+
+\begin{center}
+\begin{tabular}{ p{0.8\textwidth} c }
+(c) \ans{The question text tells you that there's variation (not all horses win), and differential replication based on that variation (winners get bred). But the race times aren't changing! That leaves only the heritability of speed as a potential issue. Despite speed being stated as being genetic, and despite speed clearly having evolved in the past, you should be able to recognize now that \textit{something has gone wrong with heritability of speed}. What, exactly, has happened to heritability here is coming soon to a lecture near you...} &   \\ \cline{1-2}
+ & \\
+& \\
+ \ans{} & \\ \cline{1-2}
+ \end{tabular}
+\end{center}
+
+\newpage
+\NP (1 point) \emph{Your coolest friend, while relaxing with you on the quad, says, ``I have both arms and legs. My arms and legs both have a skeletal arrangement of one bone, followed by two bones, followed by a series of small bones, followed by five radiating sequences of 19 bones. The muscles are arranged similarly, with flexor and extensor compartments and similar patterns of nerve branching throughout. Developmentally, both derive from a combination of cells from the lateral plate and hypaxial somites and both are triggered as a result from a cascading series of} Tbx, Wnt, Bmp, Fgf, \textit{and} Shh \textit{gene signals. The distribution of ``has arms and legs'' is extremely consistent across species. Are my arms homologous to my legs?''} How do you answer your coolest friend? 
+
+\ans{ The answer is ``yes, to an extent.'' A hard ``no'' got no credit, and a hard ``yes'' with no qualification or explanation got half credit. It's sufficient to note that arms \& legs satisfy all of the requisite conditions, so there's some substantial degree of homology between them. Later, in the evo-devo section, we'll discuss how the legs are actually descended from the arms (the jargon term for this is \textit{serial homology} but you don't need to know that to answer this question).}
+
+\ans{An alternate way to think about this question: homology is a description of fundamental sameness between biological structures (due to shared ancestry). It also comes in degrees, with structures homologous to various extents. There is ``sameness'' here!}
+
+\ans{A third way to come around on this question is to think of it transitively: a human's arm and a chimp arm are VERY homologous. Further, under the criteria we have, a chimp's \textit{leg} is \textit{to some degree} homologous with a human's arm. So human arm $=$ chimp arm $\approx$ human leg, meaning that there's a degree of sameness (some degree of homology) between a human arm \& leg.}
+\vspace{6cm}
+
+%blank
+%\newpage
+%\ 
+%\newpage
+%}
+\end{document}
+
+
+% Document settings
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{array,multirow}
+\usepackage{multicol}
+\usepackage{enumitem}
+\setlist[enumerate]{itemsep=2mm}
+
+%    \usepackage[explicit]{titlesec}
+    % Raised Rule Command:
+    % Arg 1 (Optional) - How high to raise the rule
+    % Arg 2 - Thickness of the rule
+%    \newcommand{\raisedrulefill}[0][0ex]{\leaders\hbox{\rule[#1]{1pt}{#2}}\hfill}
+%    \titleformat{\section}{\Large\bfseries}{\thesection. }{0em}{#1\,\raisedrulefill[0.4ex]{2pt}}
+\pagestyle{plain}
+\usepackage{caption}
+
+
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\tu}{\textsubscript}
+
+\newcounter{qnum}
+\newcommand{\NP}{\textbf{\refstepcounter{qnum}\theqnum.~}}
+
+\newif\ifkey
+%\keytrue
+\keyfalse
+
+\newcommand{\ans}[1]{
+	\ifkey
+		\textcolor{red}{#1}
+	\else
+		\textnormal{}
+	\fi
+}
+
+\newcommand{\ec}[1]{
+	\ifkey
+		\textnormal{}
+	\else
+		\textnormal{#1}
+	\fi
+}
+
+\begin{document}
+
+\textbf{Read each question carefully!}
+
+\textbf{Assume anything stated in the question is true.} If your answer to a question involves contradicting something stated in that question or its background information...it isn't the right answer.
+
+Also, \textbf{ask me questions!} If something is unclear or confusing, and you ask me about it, I may be able to clarify it. The worst I can do is say, ``sorry, I can't answer that question'', but most of the time I can give you some sort of clarity. Always worth trying!
+
+\newpage
+
+\NP (a) What's an example of data we might use to recognize that something is a bird? (b) What makes something a bird?
+
+\begin{table}[h]
+\caption*{}
+\begin{center}
+\begin{tabular}{ p{8cm} p{8cm}}
+	 a) \ans{feathers/dna/whatever} & \\ 
+	 &  \\ \cline{1-2} 
+	   &  \\ 
+	 b) \ans{Descent} &  \\ 
+	 &  \\ \cline{1-2} 
+	   &  \\ 
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\NP In a population of shore crabs, some individuals forage during the day, while others forage at night. Both behaviors are common. Observing them for a summer, you see that daytime foragers are more frequently preyed upon by birds, while night-time foragers are rarely attacked. In the next generation, the proportion of nighttime foragers is higher than it was initially.
+
+Based on the above scenario: (a) which (if any) necessary conditions for evolution by selection are clearly present \& (b) which (if any) necessary conditions for evolution by selection are not clearly present
+\vspace{5mm}
+\begin{table}[h]
+\caption*{}
+\begin{center}
+\begin{tabular}{ p{6cm} p{6cm}}
+	 a) \ans{variation for sure} & \\ 
+	 &  \\ \cline{1-2} 
+	   &  \\ 
+	  &  \\ 
+	 &  \\ \cline{1-2} 
+	   &  \\ 
+	 b) \ans{Heritability missing for sure--differential reproduction arguably} & \\ 
+	 &  \\ \cline{1-2} 
+	   &  \\ 
+	 & \\ 
+	 &  \\ \cline{1-2} 
+	 & \\
+\end{tabular}
+\end{center}
+\end{table}
+ 
+ \newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{q_iowa}
+	\caption*{}
+\end{figure}
+% https://www.exploreiowageology.org/assets/text/Soil/2_WL17A_Landforms.pdf
+\NP Above is a cross-section through Iowa showing the rock layers, and a geological map of which rocks are present at the surface of Iowa. Please indicate with a dark point a place on the \textit{map} where the oldest rocks may be found.
+\vspace{0.5cm}
+
+\newpage
+
+\NP Your coolest friend asks you one day, ``Say, about 400 million years ago there were zero species alive with webbed feet, and zero species alive with true hair. Nowadays there are about 8,000 species with true hair, ranging from kangaroos to zebras to humans to mice! There are also about 8,000 species alive with webbed feet, ranging from ducks to turtles to frogs to beavers! Evolutionarily, what do you think the biggest difference between the rise of these two traits is?''
+
+How do you answer?
+
+\ans{Fur (hair) evolved in one group. It's rise is a rise in homology. All hair is homologous to all other hair, as it all has a common origin. Webbed feet evolved in many groups. Its rise is a rise in analogy. Webbed feet evolved over and over again as a function response.}
+
+\newpage
+\section*{Extra Credit}
+
+What extremely exciting biological concept came from a Frenchman named Cuvier and was doubted by U.S. President Thomas Jefferson? \ans{Extinction}
+\vspace{3cm}
+
+\noindent Please correctly spell the genus name of the ``fishapod'' Neil Shubin described from Alaska \ans{Tiktaalik}
+\vspace{3cm}
+
+\end{document}
