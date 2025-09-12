@@ -59,7 +59,7 @@ find_end <- function(x)	{
 	return(out)
 }
 ######## run two-allele pop through time
-sim_pop <- function(time = 10, N = 36)	{
+sim_pop <- function(time = 100, N = 35)	{
 	output <- matrix(0, nrow = time, ncol = 5)
 	colnames(output) <- c("a", "b", "aa", "ab", "bb")
 	parents <- gen_pop(N)
