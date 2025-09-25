@@ -145,7 +145,7 @@ run_pop <- function(ngen, N = 5, nloci = 10)	{
 }
 
 plotPop <- function(Ngen = 350, Npop = 35, Nloci = 10)	{
-	test <- run_pop(Ngen, N = Npop, Nloci)
+	test <- run_pop(Ngen, Npop, Nloci)
 	par(mfrow=c(1,2), las = 1, mar = c(4, 5, 1, 1), mgp = c(1.5, 0.5, 0), tck = -0.01)
 	plot(sapply(lapply(test, function(x) table(x)), length), type = "l", ylab = "num. original still around", ylim = c(0, Npop), xlab = "generation")
 	Cols <- c("#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99","#e31a1c","#fdbf6f","#ff7f00", "#cab2d6", "#6a3d9a")

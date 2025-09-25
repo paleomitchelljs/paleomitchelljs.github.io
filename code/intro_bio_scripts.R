@@ -115,3 +115,55 @@ test_difference <- function(Data, variable="Day")	{
 	return(cat("Test statistic =", Stat, " & p-value =", Pval))
 	
 }
+
+####################################
+###### t test ######
+####################################
+
+make_boxplot <- function(x, variable, ylabel="", xlabel="")	{
+	par(mar=c(3,4,1,1), las=1, mgp=c(2.5, 0.25, 0), tck=-0.01)
+	boxplot(x ~ variable, boxwex=0.15, ylab=ylabel, xlab=xlabel, col='white')
+}
+
+run_tTest <- function(x, variable)	{
+	z <- t.test(x ~ variable)
+	if (z$p.value < 0.001)	{
+		cat("t-Test results", "\n", names(z$estimate)[1], z$estimate[1], "\n", names(z$estimate)[2], z$estimate[2], "\n", "degrees of freedom =", z$parameter, "\n", "scaled difference between group means (t) =", z$statistic, "\n", "p-value < 0.001", "\n")		
+	}
+	else		{
+		cat("t-Test results", "\n", names(z$estimate)[1], z$estimate[1], "\n", names(z$estimate)[2], z$estimate[2], "\n", "degrees of freedom =", z$parameter, "\n", "scaled difference between group means (t) = ", z$statistic, "\n", "p-value = ", z$p.value, "\n")
+	}
+}
+
+run_tTest_paired <- function(x, variable)	{
+	z <- t.test(x[which(variable==unique(variable)[1])], x[which(variable==unique(variable)[2])], paired=T)
+	if (z$p.value < 0.001)	{
+		cat("t-Test results", "\n", names(z$estimate)[1], z$estimate[1], "\n", names(z$estimate)[2], z$estimate[2], "\n", "degrees of freedom =", z$parameter, "\n", "scaled difference between group means (t) =", z$statistic, "\n", "p-value < 0.001", "\n")		
+	}
+	else		{
+		cat("t-Test results", "\n", names(z$estimate)[1], z$estimate[1], "\n", names(z$estimate)[2], z$estimate[2], "\n", "degrees of freedom =", z$parameter, "\n", "scaled difference between group means (t) = ", z$statistic, "\n", "p-value = ", z$p.value, "\n")
+	}
+}
+
+
+####################################
+###### LAB 05 SLIME MOLD PREF ######
+####################################
+compare_rates <- function(control, treatment, Ylim = NULL)	{
+	overall <- rpois(1e5, mean(c(control,treatment))) - rpois(1e5, mean(c(control,treatment)))
+	probs <- table(overall)/length(overall)
+	if (!is.null(Ylim))	{
+		hist(control - treatment, freq = F, main = "", xlab = "difference in checks (control - treatment)", ylab = "prob.", ylim = Ylim)
+	}
+	else {
+		hist(control - treatment, freq = F, main = "", xlab = "difference in checks (control - treatment)", ylab = "prob.")		
+	}
+	lines(as.numeric(names(probs)),  probs, col = 'red', lwd = 1.25)
+	test <- wilcox.test(control - treatment)
+	Stat <- paste(names(test$statistic), test$statistic, sep = " = ")
+	if (test$p.value < 0.001)	{
+		test$p.value <- 0.001
+	}
+	Pval <- paste("p-value = ", round(test$p.value, digits = 3))
+	legend("topleft", legend = c("Wilcoxon test", Stat, Pval), bty = "n")
+}
