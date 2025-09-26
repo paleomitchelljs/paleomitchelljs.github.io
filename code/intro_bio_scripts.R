@@ -154,7 +154,7 @@ compare_rates <- function(control, treatment, Ylim = NULL, Side = "topleft")	{
 	probs <- table(overall)/length(overall)
 	par(las = 1, mar = c(4,5,1,1), mgp = c(1.5, 0.5, 0), tck = -0.01, mfrow = c(1, 2))
 	boxplot(control, treatment, names = c("control", "treatment"), col = 'white', boxwex = 0.2, ylim = c(0, max(c(control, treatment))))
-	text(c(0.5, 1.5), c(0, 0), c(length(na.omit(control)), length(na.omit(treatment))))
+	text(c(0.5, 0.75, 1.75), c(0, 0, 0), c("N = ", length(na.omit(control)), length(na.omit(treatment))))
 	if (!is.null(Ylim))	{
 		hist(control - treatment, freq = F, main = "", xlab = "difference in speed (ctrl - trt)", ylab = "prob.", ylim = Ylim, border = 'white', col = 'gray70')
 	}
