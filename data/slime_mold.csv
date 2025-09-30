@@ -1,17 +1,17 @@
 lab_day,lab_start_time,sugar,water
 Tuesday,8:00 AM,2,7
-wednsday ,1:00 PM,5,2
-wednsday ,1:00 PM,3,NA
+wednsday,1:00 PM,5,2
+wednsday,1:00 PM,3,NA
 Tuesday,2:00 PM,NA,4
 Thursday,1:00 PM,NA,5
 Tuesday,11:00 AM,5,7
+tuesday,11:00 AM,NA,NA
 Thursday,8:00 AM,5,1
 Tuesday,11:00 AM,9,8
 Thursday,1:00 PM,5,2
 Tuesday,11:00 AM,2,8
 Tuesday,11:00 AM,3,NA
 Tuesday,11:00 AM,4,10
-Tuesday,11:00 AM,NA,NA
 Tuesday,11:00 AM,2,1
 Tuesday,11:00 AM,10,NA
 Thursday,1:00 PM,5,2
@@ -27,10 +27,10 @@ Tuesday,8:00 AM,3,9
 Tuesday,2:00 PM,6,2
 Thursday,8:00 AM,10,3
 Thursday,1:00 PM,5,3
-Thursday ,1:00 PM,9,NA
+Thursday,1:00 PM,9,NA
 Tuesday,8:00 PM,5,6
 Tuesday,8:00 AM,0,10
 Tuesday,2:00 PM,7,8
 Tuesday,8:00 AM,3,6
-Tuesday ,8:00 AM,4,6
+Tuesday,8:00 AM,4,6
 Thursday,1:00 PM,3,8
