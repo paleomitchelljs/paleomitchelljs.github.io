@@ -149,7 +149,15 @@ run_tTest_paired <- function(x, variable)	{
 ####################################
 ###### LAB 05 SLIME MOLD PREF ######
 ####################################
-compare_rates <- function(control, treatment, Ylim = NULL, Side = "topleft")	{
+compare_rates <- function(control, treatment, Ylim = NULL, Side = "topleft", NA_handle = F)	{
+	if (NA_handle)	{
+	# treats NAs very conservatively as only being slightly later than observed pair
+#		control[is.na(control)] <- treatment[is.na(control)] + 1
+#		treatment[is.na(treatment)] <- control[is.na(treatment)] + 1
+	# treats NAs less conservatively as being closer to the full time
+	control[is.na(control)] <- 13
+	treatment[is.na(treatment)] <- 13
+	}
 	overall <- rpois(1e5, mean(c(control,treatment))) - rpois(1e5, mean(c(control,treatment)))
 	probs <- table(overall)/length(overall)
 	par(las = 1, mar = c(4,5,1,1), mgp = c(1.5, 0.5, 0), tck = -0.01, mfrow = c(1, 2))
