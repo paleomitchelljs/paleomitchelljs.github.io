@@ -1,4 +1,4 @@
-lab_day,lab_start_time,checks_to_reach_sugar,checks_to_reach_water
+lab_day,lab_start_time,sugar,water
 Tuesday,8:00 AM,2,7
 wednsday ,1:00 PM,5,2
 wednsday ,1:00 PM,3,NA
@@ -14,9 +14,7 @@ Tuesday,11:00 AM,4,10
 Tuesday,11:00 AM,NA,NA
 Tuesday,11:00 AM,2,1
 Tuesday,11:00 AM,10,NA
-Tuesday,11:00 AM,0,0
 Thursday,1:00 PM,5,2
-Tuesday,10:00 AM,0,0
 Thursday,1:00 PM,8,3
 Tuesday,8:00 AM,7,0
 Tuesday,2:00 PM,9,6
