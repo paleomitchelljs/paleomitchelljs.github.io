@@ -92,7 +92,7 @@ runAddSim <- function(PopSize, Va=5, nLoci=5, nSims=5, nGens=50, Err=0.001, S=0.
 			if (plotRange)	{
 				Mins <- apply(X, 1, min)
 				Maxs <- apply(X, 1, max)
-				silent <- sapply(1:length(Mins), function(x) segment(1:nGens, Mins, 1:nGens, Maxs), lwd = 0.5, lty = 2, col = Cols[k])
+				silent <- sapply(1:length(Mins), function(x) segments(1:nGens, Mins, 1:nGens, Maxs, lwd = 0.5, lty = 2, col = Cols[k]))
 			}
 		}
 		Z[[k]] <- X
