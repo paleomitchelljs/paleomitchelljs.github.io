@@ -31,7 +31,7 @@ getProb <- function(x, wSD=0.05)	{
 # Each individual is chosen at random to mate. The probably an individual is chosen is a function of it's size relative to the other members of the population. 
 # Beta = 0 (no selection) means that each individual has a 1/PopSize chance to breed
 # Beta = 1 means that 
-runAddSim <- function(PopSize, Va=5, nLoci=5, nSims=5, nGens=50, Err=0.001, S=0.005, Cols=c("#e41a1c","#377eb8","#4daf4a","#984ea3","#ff7f00"), Cexs=c(1.5, 1.4, 1.3, 1.2, 1.1), showMax=F, TopLim=125, Bottom=-10, output=F, setPar=T, plotAlleles=F, plotGen=T)	{
+runAddSim <- function(PopSize, Va=5, nLoci=5, nSims=5, nGens=50, Err=0.001, S=0.005, Cols=c("#e41a1c","#377eb8","#4daf4a","#984ea3","#ff7f00"), Cexs=c(1.5, 1.4, 1.3, 1.2, 1.1), showMax=F, TopLim=125, Bottom=-10, output=F, setPar=T, plotAlleles=F, plotGen=T, plotRange = T)	{
 	# store it all 
 	Z <- list()
 	nAlleles <- matrix(NA, ncol=nGens, nrow=nSims)
@@ -89,6 +89,11 @@ runAddSim <- function(PopSize, Va=5, nLoci=5, nSims=5, nGens=50, Err=0.001, S=0.
 		# plot the change in mean size over all th generations
 		if (plotGen)	{
 			points(1:nGens, apply(X,1,mean), type="b", col=Cols[k], pch=16, cex=Cexs[k], lwd=Cexs[k])
+			if (plotRange)	{
+				Mins <- apply(X, 1, min)
+				Maxs <- apply(X, 1, max)
+				silent <- sapply(1:length(Mins), function(x) segment(1:nGens, Mins, 1:nGens, Maxs), lwd = 0.5, lty = 2, col = Cols[k])
+			}
 		}
 		Z[[k]] <- X
 		nAlleles[k,] <- nA
