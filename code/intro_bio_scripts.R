@@ -167,7 +167,7 @@ compare_rates <- function(control, treatment, Ylim = NULL, Side = "topleft", NA_
 		hist(control - treatment, freq = F, main = "", xlab = "difference in speed (ctrl - trt)", ylab = "prob.", ylim = Ylim, border = 'white', col = 'gray70')
 	}
 	else {
-		hist(control - treatment, freq = F, main = "", xlab = "difference in speed (ctrl - trt)", ylab = "prob.", border = 'white', col = 'gray70', ylim = c(0, 0.16))		
+		hist(control - treatment, freq = F, main = "", xlab = "difference in speed (ctrl - trt)", ylab = "prob.", border = 'white', col = 'gray70')		
 	}
 	lines(as.numeric(names(probs)),  probs, col = 'red', lwd = 1.25)
 	test <- wilcox.test(control - treatment)
