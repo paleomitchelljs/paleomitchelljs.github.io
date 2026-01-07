@@ -170,7 +170,7 @@ compare_rates <- function(control, treatment, Ylim = NULL, Side = "topleft", NA_
 		hist(control - treatment, freq = F, main = "", xlab = "difference in speed (ctrl - trt)", ylab = "prob.", border = 'white', col = 'gray70')		
 	}
 	lines(as.numeric(names(probs)),  probs, col = 'red', lwd = 1.25)
-	test <- wilcox.test(control - treatment)
+	test <- wilcox.test(control, treatment)
 	Stat <- paste(names(test$statistic), test$statistic, sep = " = ")
 	if (test$p.value < 0.001)	{
 		test$p.value <- 0.001
