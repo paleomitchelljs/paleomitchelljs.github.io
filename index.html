@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -9,48 +11,62 @@
 
 		  ga('create', 'UA-84885154-1', 'auto');
 		  ga('send', 'pageview');
-
 		</script>
 		<title>Jonathan S. Mitchell</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="/css/main.css">
 		<base target="_blank">
 	</head>
 	<body>
 		<nav>
-    		<ul>
-        		<li><a href="/index.html" target="_self">Home</a></li>
-	        	<li><a href="/about.html" target="_self">About</a></li>
-        		<li><a href="/cv.html" target="_self">CV</a></li>
-        		<li><a href="/research.html" target="_self">Research</a></li>
-        		<li><a href="/outreach.html" target="_self">Outreach</a></li>
-    		</ul>
+			<div class="nav-container">
+				<div class="nav-brand">J.S. Mitchell</div>
+				<button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+				<ul>
+					<li><a href="/index.html" target="_self">Home</a></li>
+					<li><a href="/about.html" target="_self">About</a></li>
+					<li><a href="/cv.html" target="_self">CV</a></li>
+					<li><a href="/research.html" target="_self">Research</a></li>
+					<li><a href="/outreach.html" target="_self">Outreach</a></li>
+				</ul>
+			</div>
 		</nav>
-		<div class="container">
-    		<div class="blurb">
-        		<h1><a href="https://scholar.google.com/citations?hl=en&user=zxT9sacAAAAJ&view_op=list_works&gmla=AJsN-F5-h_BVmvNuzFkUfOPhtEjgel2EtVcwWU5fqQDVapzjXaS4Hvdb5OgGHu1ECDmh1H6GPMjRXfEfUznilvu0X5jyq_Frr8IBnpiLxBlLl4Da52c_kRe11-6_nORaPmJ1rRk4AIeR">Jonathan S. Mitchell</a></h1>
-				<p>
-					<div class="noborder" style="overflow: auto; width: 640px; height: 380px;">
-					<div class="noborder" style="width: 4200px;">
-					<IMG SRC="/img/scroll/Tree.jpg" ALT="tree" ALIGN="middle" WIDTH=640 HEIGHT=360>
-					<IMG SRC="/img/scroll/Corals.JPG" ALT="St. John reef" ALIGN="middle" WIDTH=480 HEIGHT=360>
-					<IMG SRC="/img/scroll/carrying_fossil_2.jpg" ALT="hauling fossil" ALIGN="middle" WIDTH=480 HEIGHT=360>
-					<IMG SRC="/img/scroll/Horse.jpg" ALT="Argentina" ALIGN="middle" WIDTH=480 HEIGHT=360>
-					<IMG SRC="/img/scroll/argentina_rock.jpg" ALT="Argentina2" ALIGN="middle" WIDTH=480 HEIGHT=360>
-					<IMG SRC="/img/scroll/newt_nimoy.jpg" ALT="newt" ALIGN="middle" WIDTH=270 HEIGHT=360>
-					<IMG SRC="/img/scroll/Quarry.jpg" ALT="Argentina_quarry" ALIGN="middle" WIDTH=270 HEIGHT=360>
-					<IMG SRC="/img/scroll/feeding_horse.jpg" ALT="horse feeding" ALIGN="middle" WIDTH=480 HEIGHT=360>
-					<IMG SRC="/img/scroll/carrying_fossil.jpg" ALT="Argentina0" ALIGN="middle" WIDTH=270 HEIGHT=360>
-
-					</div></div></p>
-				<p>I am an evolutionary biologist and vertebrate paleontologist interested in how species interactions shape evolutionary trajectories.</p>
-    		</div><!-- /.blurb -->
-		</div><!-- /.container -->
+		<main>
+			<div class="container">
+				<div class="blurb">
+					<h1><a href="https://scholar.google.com/citations?hl=en&user=zxT9sacAAAAJ&view_op=list_works&gmla=AJsN-F5-h_BVmvNuzFkUfOPhtEjgel2EtVcwWU5fqQDVapzjXaS4Hvdb5OgGHu1ECDmh1H6GPMjRXfEfUznilvu0X5jyq_Frr8IBnpiLxBlLl4Da52c_kRe11-6_nORaPmJ1rRk4AIeR">Jonathan S. Mitchell</a></h1>
+					<div class="gallery-container">
+						<div class="gallery">
+							<img src="/img/scroll/Tree.jpg" alt="Tree" width="640" height="360">
+							<img src="/img/scroll/Corals.JPG" alt="St. John reef" width="480" height="360">
+							<img src="/img/scroll/carrying_fossil_2.jpg" alt="Hauling fossil" width="480" height="360">
+							<img src="/img/scroll/Horse.jpg" alt="Argentina" width="480" height="360">
+							<img src="/img/scroll/argentina_rock.jpg" alt="Argentina rock formation" width="480" height="360">
+							<img src="/img/scroll/newt_nimoy.jpg" alt="Newt" width="270" height="360">
+							<img src="/img/scroll/Quarry.jpg" alt="Argentina quarry" width="270" height="360">
+							<img src="/img/scroll/feeding_horse.jpg" alt="Horse feeding" width="480" height="360">
+							<img src="/img/scroll/carrying_fossil.jpg" alt="Carrying fossil" width="270" height="360">
+						</div>
+					</div>
+					<p>I am an evolutionary biologist and vertebrate paleontologist interested in how species interactions shape evolutionary trajectories.</p>
+				</div>
+			</div>
+		</main>
 		<footer>
-    		<ul>
-    			 <li><a href="https://twitter.com/JonSMitchell?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @JonSMitchell</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
-        		<li><a href="mailto:jonsmitch2@gmail.com">email</a></li>
-        		<li><a href="https://github.com/paleomitchelljs">github.com/paleomitchelljs</a></li>
-			</ul>
+			<div class="footer-container">
+				<ul>
+					<li><a href="https://x.com/JonSMitchell">X / Twitter</a></li>
+					<li><a href="mailto:jonsmitch2@gmail.com">Email</a></li>
+					<li><a href="https://github.com/paleomitchelljs">GitHub</a></li>
+				</ul>
+			</div>
 		</footer>
+		<script>
+			document.querySelector('.nav-toggle').addEventListener('click', function() {
+				document.querySelector('nav ul').classList.toggle('active');
+			});
+		</script>
 	</body>
 </html>
