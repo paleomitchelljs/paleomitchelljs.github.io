@@ -39,8 +39,8 @@ add_regression <- function(Model, location = "topleft", y_variable = "y", x_vari
 			polygon(c(X, rev(X)), c(confidence_intervals[, "lwr"], rev(confidence_intervals[, "upr"])), col = grDevices:::adjustcolor(linecolor, alpha.f=0.25), border = NA)
 		}
 		if (show_line)	{
-			segments(x0=Model$model[1,2], y0=Model$fitted[1], x1=Model$model[nrow(Model$model),2], y1=Model$fitted[length(Model$fitted)], col = linecolor, lty = code[linetype])
-#			abline(Model, col = linecolor, lty = code[linetype])
+#			segments(x0=Model$model[1,2], y0=Model$fitted[1], x1=Model$model[nrow(Model$model),2], y1=Model$fitted[length(Model$fitted)], col = linecolor, lty = code[linetype])
+			abline(Model, col = linecolor, lty = code[linetype])
 		}
 		pval <- Values[2,4]
 		if (pval < 0.001)	{
@@ -59,7 +59,10 @@ add_regression <- function(Model, location = "topleft", y_variable = "y", x_vari
 
 	}
 }
-
+regress <- function(x, y)	{
+	out <- lm( y ~ x )
+	return(out)
+}
 ### TODO Include t-values?
 compare.slopes <- function(standard_slope, standard_slope_se, experiment_slope, experiment_slope_se, df)	{
 	SEvec <- c(standard_slope_se, experiment_slope_se)
