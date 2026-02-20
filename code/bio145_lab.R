@@ -79,7 +79,7 @@ compare.slopes <- function(standard_slope, standard_slope_se, experiment_slope, 
 		df <- ((SEvec[1]^2 + SEvec[2]^2) / ((SEvec[1]^2 / df)) + ((SEvec[2]^2) / df))
 		Stat <- Num / Denom
 		Pval <- 1 - pt(abs(Stat), df)
-		cat("t-value = ", Stat, "; p-value = ", Pval)
+		cat("slope difference = ", experiment_slope - standard_slope, "; p-value = ", Pval)
 	}
 }
 
