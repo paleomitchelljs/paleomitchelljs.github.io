@@ -64,7 +64,7 @@ regress <- function(x, y)	{
 	return(out)
 }
 ### TODO Include t-values?
-compare.slopes <- function(standard_slope, standard_slope_se, experiment_slope, experiment_slope_se, df)	{
+compare.slopes <- function(standard_slope, standard_slope_se, experiment_slope, experiment_slope_se, df=NULL, n=NULL, int_zero = FALSE)	{
 	SEvec <- c(standard_slope_se, experiment_slope_se)
 	if (SEvec[1] == SEvec[2])	{
 		# kludge to prevent rounding/student errors from producing identical SEs and wrecking the analysis
@@ -74,6 +74,17 @@ compare.slopes <- function(standard_slope, standard_slope_se, experiment_slope, 
 		cat("Your estimated slopes are identical! They can't be clearly different!")
 	}
 	else {
+		if (is.null(n) && is.null(df))	{
+			cat("You need to provide a sample size (n) or a degrees of freedom")
+		}
+		if (is.null(df))	{
+			if (int_zero){
+				df <- n - 1
+			}
+			else	{
+				df <- n - 2
+			}
+		}
 		Num <- standard_slope - experiment_slope
 		Denom <- sqrt( max(SEvec)^2 - min(SEvec)^2)
 		df <- ((SEvec[1]^2 + SEvec[2]^2) / ((SEvec[1]^2 / df)) + ((SEvec[2]^2) / df))
