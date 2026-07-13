@@ -89,6 +89,11 @@
   --mds-rule-strong: var(--mds-ink-400);
   --mds-accent:    var(--mds-accent-crimson);
 
+  /* Web UI surfaces (set here so dark mode can override in one place) */
+  --nav-bg:        rgba(255, 255, 255, 0.72);
+  --btn-bg:        var(--mds-ink-900);
+  --btn-fg:        var(--mds-ink-0);
+
   /* Chart-specific */
   --chart-axis:        var(--mds-ink-900);
   --chart-axis-minor:  var(--mds-ink-500);
@@ -148,6 +153,37 @@
 
   --mds-shadow-1: none;
   --mds-shadow-2: none;
+}
+
+/* ================ WEB DARK MODE (site theme toggle) ================
+   Scoped to [data-theme="dark"], set by /js/site.js on the main site
+   pages only, so course/chart subpages are never affected.
+   A refined near-black (not the pure #000 of presentations). */
+:root[data-theme="dark"] {
+  --mds-bg:          #0d0d10;
+  --mds-bg-sunk:     #08080a;
+  --mds-surface:     #151519;
+  --mds-surface-2:   #1c1c22;
+  --mds-fg:          #f4f4f2;
+  --mds-fg-muted:    #a4a4ac;
+  --mds-fg-soft:     #72727b;
+  --mds-rule:        #2a2a31;
+  --mds-rule-strong: #45454e;
+  --mds-accent:      #ff5a4d;
+
+  --nav-bg:          rgba(13, 13, 16, 0.68);
+  --btn-bg:          var(--mds-fg);
+  --btn-fg:          #0d0d10;
+
+  /* Heavy black figure frames become invisible on dark; soften them. */
+  --mds-border-frame: 1.5px solid var(--mds-rule-strong);
+
+  --mds-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --mds-shadow-2: 0 12px 34px rgba(0, 0, 0, 0.55), 0 3px 8px rgba(0, 0, 0, 0.4);
+
+  --chart-axis: #f4f4f2;
+  --chart-grid: #26262c;
+  --chart-series-1: #f4f4f2;
 }
 
 /* ---------------- SEMANTIC TYPE CLASSES ----------------

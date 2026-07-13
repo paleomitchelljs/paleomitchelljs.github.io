@@ -4,6 +4,9 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script>
+		  (function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+		</script>
+		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -24,18 +27,26 @@
 	<body>
 		<nav>
 			<div class="nav-container">
-				<div class="nav-brand">J.S. Mitchell</div>
-				<button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
-				<ul>
+				<a class="nav-brand" href="/index.html" target="_self">J.S. Mitchell</a>
+				<div class="nav-right">
+					<ul>
 					<li><a href="/index.html" target="_self">Home</a></li>
 					<li><a href="/about.html" target="_self" aria-current="page">About</a></li>
 					<li><a href="/cv.html" target="_self">CV</a></li>
 					<li><a href="/research.html" target="_self">Research</a></li>
 					<li><a href="/outreach.html" target="_self">Outreach</a></li>
 					<li><a href="/software.html" target="_self">Software</a></li>
-				</ul>
-			</div>
-		</nav>
+									</ul>
+					<button class="theme-toggle icon-btn" type="button" aria-label="Switch to dark theme" title="Toggle theme">
+						<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+						<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+					</button>
+					<button class="nav-toggle icon-btn" type="button" aria-label="Toggle menu" aria-expanded="false">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+					</button>
+					</div>
+				</div>
+			</nav>
 		<main>
 			<div class="container">
 				<div class="blurb">
@@ -77,12 +88,9 @@
 					<li><a href="mailto:jonsmitch2@gmail.com">Email</a></li>
 					<li><a href="https://github.com/paleomitchelljs">GitHub</a></li>
 				</ul>
+				<p class="footer-note">&copy; Jonathan S. Mitchell</p>
 			</div>
 		</footer>
-		<script>
-			document.querySelector('.nav-toggle').addEventListener('click', function() {
-				document.querySelector('nav ul').classList.toggle('active');
-			});
-		</script>
+		<script src="/js/site.js" defer></script>
 	</body>
 </html>
