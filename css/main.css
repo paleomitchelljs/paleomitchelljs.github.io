@@ -445,6 +445,38 @@ main {
 
 .card-grid .card { margin-bottom: 0; height: 100%; }
 
+/* ---- Tool sections (software page) ----------------------- */
+.tool-section { margin-top: var(--mds-sp-7); }
+
+.tool-section > h2 {
+  font-size: var(--mds-text-xl);
+  padding-bottom: var(--mds-sp-2);
+  margin-bottom: var(--mds-sp-2);
+  border-bottom: 1px solid var(--mds-rule);
+}
+
+.section-lead {
+  font-family: var(--mds-sans);
+  font-size: var(--mds-text-sm);
+  color: var(--mds-fg-muted);
+  margin-bottom: 0;
+}
+
+.tool-section .card-grid { margin-top: var(--mds-sp-4); }
+
+/* ---- PDF embed (CV page) --------------------------------- */
+.pdf-embed {
+  display: block;
+  width: 100%;
+  height: 85vh;
+  min-height: 600px;
+  margin-top: var(--mds-sp-5);
+  border: var(--mds-border-frame);
+  border-radius: var(--mds-radius-3);
+  box-shadow: var(--mds-shadow-1);
+  background: var(--mds-surface-2);
+}
+
 /* ---- Research sections ----------------------------------- */
 .research-section {
   display: grid;
